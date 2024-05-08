@@ -9,6 +9,7 @@ import {
 } from '../utils/local-data';
 import { showFormattedDate } from '../utils';
 import parser from 'html-react-parser';
+import { MdArchive, MdUnarchive, MdDelete } from "react-icons/md";
 
 export default function DetailWrapper() {
   const navigate = useNavigate();
@@ -75,27 +76,27 @@ class Detail extends Component {
           {showFormattedDate(this.state.note.createdAt)}
         </p>
         <p className='text-lg'>{parser(this.state.note.body)}</p>
-        <div className='my-8 flex gap-2'>
+        <div className='my-8 flex justify-end gap-2'>
           {this.state.note.archived ? (
             <button
-              className='bg-yellow-400 text-white text-lg py-1 px-3 rounded-md hover:bg-yellow-600'
+              className='bg-yellow-400 text-white text-lg p-3 rounded-md hover:bg-yellow-600'
               onClick={() => this.onUnarchive(id)}
             >
-              UnArchive
+              <MdUnarchive />
             </button>
           ) : (
             <button
-              className='bg-slate-400 text-white text-lg py-1 px-3 rounded-md hover:bg-slate-600'
+              className='bg-slate-400 text-white text-lg p-3 rounded-md hover:bg-slate-600'
               onClick={() => this.onArchiveHandler(id)}
             >
-              Archive
+              <MdArchive />
             </button>
           )}
           <button
-            className='bg-rose-400 text-white text-lg py-1 px-3 rounded-md hover:bg-rose-600'
+            className='bg-rose-400 text-white text-lg p-3 rounded-md hover:bg-rose-600'
             onClick={() => this.onDeleteHandler(id)}
           >
-            Delete
+            <MdDelete />
           </button>
         </div>
       </div>
