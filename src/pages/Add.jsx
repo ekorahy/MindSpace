@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { addNote } from '../utils/local-data'
 import NoteInput from '../components/molekul/NoteInput'

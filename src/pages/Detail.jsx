@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   archiveNote,
@@ -10,6 +10,7 @@ import {
 import { showFormattedDate } from '../utils';
 import parser from 'html-react-parser';
 import { MdArchive, MdUnarchive, MdDelete } from "react-icons/md";
+import PropTypes from 'prop-types';
 
 export default function DetailWrapper() {
   const navigate = useNavigate();
@@ -102,4 +103,9 @@ class Detail extends Component {
       </div>
     );
   }
+}
+
+Detail.propTypes = {
+  id: PropTypes.string.isRequired,
+  navigate: PropTypes.func.isRequired
 }

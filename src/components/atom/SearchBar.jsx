@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 export const SearchBar = ({ keyword, keywordChange }) => {
   return (
@@ -11,3 +11,9 @@ export const SearchBar = ({ keyword, keywordChange }) => {
     />
   );
 };
+
+
+SearchBar.propTypes = {
+  keyword: PropTypes.string.isRequired,
+  keywordChange: PropTypes.func.isRequired
+}

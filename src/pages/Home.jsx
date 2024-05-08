@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import {
   archiveNote,
   deleteNote,
@@ -8,6 +8,7 @@ import {
 import { NoteList } from '../components/molekul/NoteList';
 import { SearchBar } from '../components/atom/SearchBar';
 import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const HomeWrapper = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -118,4 +119,9 @@ class Home extends Component {
       </div>
     );
   }
+}
+
+Home.propTypes = {
+  defaultKeyword: PropTypes.string.isRequired,
+  keywordChange: PropTypes.func.isRequired
 }

@@ -1,6 +1,6 @@
-import React from 'react';
 import { NoteBody } from '../atom/NoteBody';
 import { NoteAction } from '../atom/NoteAction';
+import PropTypes from 'prop-types';
 
 export const NoteItem = ({
   id,
@@ -25,3 +25,14 @@ export const NoteItem = ({
     </section>
   );
 };
+
+NoteItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  archived: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  onUnarchive: PropTypes.func.isRequired
+}
