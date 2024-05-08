@@ -8,6 +8,7 @@ import {
   unarchiveNote,
 } from '../utils/local-data';
 import { showFormattedDate } from '../utils';
+import parser from 'html-react-parser';
 
 export default function DetailWrapper() {
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ class Detail extends Component {
         <p className='font-light text-lg'>
           {showFormattedDate(this.state.note.createdAt)}
         </p>
-        <p className='text-lg'>{this.state.note.body}</p>
+        <p className='text-lg'>{parser(this.state.note.body)}</p>
         <div className='my-8 flex gap-2'>
           {this.state.note.archived ? (
             <button
