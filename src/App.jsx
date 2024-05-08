@@ -2,12 +2,13 @@ import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import DetailWrapper from './pages/Detail';
+import { Add } from './pages/Add';
 
 export const App = () => {
   return (
     <>
       <header className='p-4'>
-        <nav className='max-w-6xl mx-auto'>
+        <nav className='max-w-6xl flex justify-between mx-auto'>
           <Link to='/'>
             <img
               className='h-10 rounded-full'
@@ -15,6 +16,7 @@ export const App = () => {
               alt='logo image'
             />
           </Link>
+          <Link className='font-bold hover:text-violet-400' to={'/add'}>Add</Link>
         </nav>
       </header>
 
@@ -23,6 +25,7 @@ export const App = () => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/detail/:id' element={<DetailWrapper />} />
+            <Route path='/add' element={<Add />} />
           </Routes>
         </div>
       </main>
