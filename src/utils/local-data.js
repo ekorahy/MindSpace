@@ -52,20 +52,27 @@ function getNote(id) {
   return foundedNote;
 }
 
-function getActiveNotes() {
+function getActiveNotes({ notes }) {
   const activeNotes = notes.filter((note) => !note.archived);
   return activeNotes;
 }
 
-function getArchivedNotes() {
+function getArchivedNotes({ notes }) {
   const archivedNotes = notes.filter((note) => note.archived);
   return archivedNotes;
 }
 
 function addNote({ title, body }) {
-  notes = [...notes, {
-    id: `notes-${+new Date()}`, title: title || '(untitled)', body, createdAt: new Date().toISOString(), archived: false,
-  }];
+  notes = [
+    ...notes,
+    {
+      id: `notes-${+new Date()}`,
+      title: title || '(untitled)',
+      body,
+      createdAt: new Date().toISOString(),
+      archived: false,
+    },
+  ];
 }
 
 function deleteNote(id) {

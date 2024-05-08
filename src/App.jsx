@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
 import DetailWrapper from './pages/Detail';
 import { Add } from './pages/Add';
+import { HomeWrapper } from './pages/Home';
 
 export const App = () => {
   return (
@@ -23,7 +23,7 @@ export const App = () => {
       <main className='p-4'>
         <div className='max-w-6xl mx-auto'>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<HomeWrapper />} />
             <Route path='/detail/:id' element={<DetailWrapper />} />
             <Route path='/add' element={<Add />} />
           </Routes>
