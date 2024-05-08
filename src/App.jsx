@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
+import DetailWrapper from './pages/Detail';
 
 export const App = () => {
   return (
@@ -21,6 +22,7 @@ export const App = () => {
         <div className='max-w-6xl mx-auto'>
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/detail/:id' element={<DetailWrapper />} />
           </Routes>
         </div>
       </main>

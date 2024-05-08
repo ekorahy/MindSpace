@@ -14,7 +14,7 @@ export const NoteItem = ({
 }) => {
   return (
     <section className='relative border p-4 rounded-md'>
-      <NoteBody title={title} createdAt={createdAt} body={body} />
+      <NoteBody id={id} title={title} createdAt={createdAt} body={body} />
       <NoteAction
         id={id}
         archived={archived}
