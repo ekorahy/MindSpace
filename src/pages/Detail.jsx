@@ -1,21 +1,22 @@
 import { Component } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { showFormattedDate } from '../utils';
+import parse from 'html-react-parser';
+import { MdArchive, MdUnarchive, MdDelete } from 'react-icons/md';
+import PropTypes from 'prop-types';
 import {
   archiveNote,
   deleteNote,
-  getAllNotes,
   getNote,
   unarchiveNote,
-} from '../utils/local-data';
-import { showFormattedDate } from '../utils';
-import parser from 'html-react-parser';
-import { MdArchive, MdUnarchive, MdDelete } from "react-icons/md";
-import PropTypes from 'prop-types';
+} from '../data/remote/remote';
 
-export default function DetailWrapper() {
+export const DetailWrapper = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  return <Detail id={id} navigate={navigate} />;
+  return (
+    <Detail id={id} navigate={navigate} />
+  )
 }
 
 class Detail extends Component {
@@ -23,46 +24,38 @@ class Detail extends Component {
     super(props);
 
     this.state = {
-      note: getNote(props.id),
+      note: [],
     };
 
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchiveHandler = this.onArchiveHandler.bind(this);
-    this.onUnarchive = this.onUnarchive.bind(this);
+    this.onUnarchiveHandler = this.onUnarchiveHandler.bind(this);
   }
 
-  onDeleteHandler(id) {
-    deleteNote(id);
+  async componentDidMount() {
+    const { data } = await getNote(this.props.id);
 
     this.setState(() => {
       return {
-        notes: getAllNotes(),
+        note: data,
       };
     });
+  }
+
+  async onDeleteHandler(id) {
+    await deleteNote(id);
 
     this.props.navigate('/');
   }
 
-  onArchiveHandler(id) {
-    archiveNote(id);
+  async onArchiveHandler(id) {
+    await archiveNote(id);
 
-    this.setState(() => {
-      return {
-        notes: getAllNotes(),
-      };
-    });
-
-    this.props.navigate('/');
+    this.props.navigate('/archived');
   }
 
-  onUnarchive(id) {
-    unarchiveNote(id);
-
-    this.setState(() => {
-      return {
-        notes: getAllNotes(),
-      };
-    });
+  async onUnarchiveHandler(id) {
+    await unarchiveNote(id);
 
     this.props.navigate('/');
   }
@@ -76,12 +69,12 @@ class Detail extends Component {
         <p className='font-light text-lg'>
           {showFormattedDate(this.state.note.createdAt)}
         </p>
-        <p className='text-lg'>{parser(this.state.note.body)}</p>
+        <p className='text-lg'>{parse(`${this.state.note.body}`)}</p>
         <div className='my-8 flex justify-end gap-2'>
           {this.state.note.archived ? (
             <button
               className='bg-yellow-400 text-white text-lg p-3 rounded-md hover:bg-yellow-600'
-              onClick={() => this.onUnarchive(id)}
+              onClick={() => this.onUnarchiveHandler(id)}
             >
               <MdUnarchive />
             </button>
@@ -107,5 +100,5 @@ class Detail extends Component {
 
 Detail.propTypes = {
   id: PropTypes.string.isRequired,
-  navigate: PropTypes.func.isRequired
-}
+  navigate: PropTypes.func.isRequired,
+};

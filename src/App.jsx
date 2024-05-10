@@ -1,13 +1,12 @@
 import { Link, Route, Routes } from 'react-router-dom';
-import DetailWrapper from './pages/Detail';
 import { Add } from './pages/Add';
-
 import { Component } from 'react';
 import { getUserLogged, putAccessToken } from './data/remote/remote';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
-import { HomeWrapper } from './pages/Home'
+import { HomeWrapper } from './pages/Home';
 import { ArchivedWrapper } from './pages/Archived';
+import { DetailWrapper } from './pages/Detail';
 
 export default class App extends Component {
   constructor(props) {
@@ -93,7 +92,10 @@ export default class App extends Component {
               <Link className='font-bold hover:text-violet-400' to={'/add'}>
                 Add
               </Link>
-              <Link className='font-bold hover:text-violet-400' to={'/archived'}>
+              <Link
+                className='font-bold hover:text-violet-400'
+                to={'/archived'}
+              >
                 Archived
               </Link>
             </div>
