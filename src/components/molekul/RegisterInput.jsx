@@ -48,24 +48,35 @@ export default class RegisterInput extends Component {
     return (
       <form className='grid grid-cols-1' onSubmit={this.onSubmitHandler}>
         <input
+          className='p-2 border rounded-md mb-2'
           type='text'
           placeholder='Name'
           value={this.state.name}
           onChange={this.onNameChangeHandler}
+          required
         />
         <input
+          className='p-2 border rounded-md mb-2'
           type='text'
           placeholder='Email'
           value={this.state.email}
           onChange={this.onEmailChangeHandler}
+          required
         />
         <input
+          className='p-2 border rounded-md mb-2'
           type='text'
           placeholder='Password'
           value={this.state.password}
           onChange={this.onPasswordChangeHandler}
+          required
         />
-        <button type='submit'>Register</button>
+        <button
+          className='p-2 bg-violet-400 rounded-md hover:bg-violet-500 mb-4'
+          type='submit'
+        >
+          Register
+        </button>
       </form>
     );
   }

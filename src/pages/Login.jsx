@@ -13,12 +13,20 @@ export const Login = ({ loginSuccess }) => {
   }
 
   return (
-    <div>
-      <h2>Login Form</h2>
-      <LoginInput login={onLogin} />
-      <p>
-        Dont have an account yet ? <Link to='/register'>Register</Link>{' '}
-      </p>
+    <div className='h-screen flex items-center justify-center'>
+      <div className='h-max w-96 bg-slate-100 p-8 rounded-md'>
+        <h2 className='font-bold text-xl mb-4'>Login Form</h2>
+        <LoginInput login={onLogin} />
+        <p className='text-center font-light'>
+          Don&apos;t have an account yet ?{' '}
+          <Link
+            className='font-bold text-violet-400 hover:text-violet-500'
+            to='/register'
+          >
+            Register
+          </Link>{' '}
+        </p>
+      </div>
     </div>
   );
 };

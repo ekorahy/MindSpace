@@ -39,6 +39,7 @@ export default class LoginInput extends Component {
     return (
       <form className='grid grid-cols-1' onSubmit={this.onSubmitHandler}>
         <input
+          className='p-2 border rounded-md mb-2'
           type='text'
           placeholder='Email'
           value={this.state.email}
@@ -46,13 +47,19 @@ export default class LoginInput extends Component {
           required
         />
         <input
+          className='p-2 border rounded-md mb-2'
           type='text'
           placeholder='Password'
           value={this.state.password}
           onChange={this.onPasswordChangeHandler}
           required
         />
-        <button type='submit'>Login</button>
+        <button
+          className='p-2 bg-violet-400 rounded-md mb-4 hover:bg-violet-500 bg-4'
+          type='submit'
+        >
+          Login
+        </button>
       </form>
     );
   }

@@ -82,10 +82,17 @@ export default class App extends Component {
                 alt='logo image'
               />
             </Link>
-            <button onClick={() => this.onLogout()}>Log out</button>
-            <Link className='font-bold hover:text-violet-400' to={'/add'}>
-              Add
-            </Link>
+            <div className='flex items-center gap-4'>
+              <button
+                className='font-bold text-rose-400 hover:text-rose-500'
+                onClick={() => this.onLogout()}
+              >
+                Log out
+              </button>
+              <Link className='font-bold hover:text-violet-400' to={'/add'}>
+                Add
+              </Link>
+            </div>
           </nav>
         </header>
 

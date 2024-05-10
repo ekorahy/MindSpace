@@ -14,12 +14,20 @@ export const Register = () => {
   }
 
   return (
-    <div>
-      <h2>Register Form</h2>
-      <RegisterInput register={onRegisterHandler} />
-      <p>
-        Back to <Link to='/'>Log in</Link>
-      </p>
+    <div className='h-screen flex items-center justify-center'>
+      <div className='h-max w-96 bg-slate-100 p-8 rounded-md'>
+        <h2 className='font-bold text-xl mb-4'>Register Form</h2>
+        <RegisterInput register={onRegisterHandler} />
+        <p className='text-center font-light'>
+          Back to{' '}
+          <Link
+            className='font-bold text-violet-400 hover:text-violet-500'
+            to='/'
+          >
+            Log in
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
