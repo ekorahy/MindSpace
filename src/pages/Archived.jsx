@@ -1,16 +1,15 @@
 import { Component } from 'react';
-import { NoteList } from '../components/molekul/NoteList';
-import { SearchBar } from '../components/atom/SearchBar';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import {
   archiveNote,
   deleteNote,
-  getActiveNotes,
+  getArchivedNotes,
   unarchiveNote,
 } from '../data/remote/remote';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { SearchBar } from '../components/atom/SearchBar';
+import { NoteList } from '../components/molekul/NoteList';
 
-export const HomeWrapper = () => {
+export const ArchivedWrapper = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -21,7 +20,7 @@ export const HomeWrapper = () => {
   }
 
   return (
-    <Home
+    <Archived
       defaultKeyword={keyword}
       keywordChange={changeSearchParams}
       navigate={navigate}
@@ -29,12 +28,12 @@ export const HomeWrapper = () => {
   );
 };
 
-class Home extends Component {
+export default class Archived extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeNotes: [],
+      archivedNotes: [],
       keyword: props.defaultKeyword || '',
     };
 
@@ -45,20 +44,20 @@ class Home extends Component {
   }
 
   async componentDidMount() {
-    const { data } = await getActiveNotes();
+    const { data } = await getArchivedNotes();
 
     this.setState(() => {
-      return { activeNotes: data };
+      return { archivedNotes: data };
     });
   }
 
   async onDeleteHandler(id) {
     await deleteNote(id);
 
-    const { data } = await getActiveNotes();
+    const { data } = await getArchivedNotes();
     this.setState(() => {
       return {
-        activeNotes: data,
+        archivedNotes: data,
       };
     });
   }
@@ -66,25 +65,25 @@ class Home extends Component {
   async onArchiveHandler(id) {
     await archiveNote(id);
 
-    const { data } = await getActiveNotes();
+    const { data } = await getArchivedNotes();
     this.setState(() => {
       return {
-        activeNotes: data,
+        archivedNotes: data,
       };
     });
-
-    this.props.navigate('/archived');
   }
 
   async onUnarchiveHandler(id) {
-    unarchiveNote(id);
+    await unarchiveNote(id);
 
-    const { data } = await getActiveNotes();
+    const { data } = await getArchivedNotes();
     this.setState(() => {
       return {
-        activeNotes: data,
+        archivedNotes: data,
       };
     });
+
+    this.props.navigate('/');
   }
 
   onKeywordChangeHandler(keyword) {
@@ -98,7 +97,7 @@ class Home extends Component {
   }
 
   render() {
-    const activeNotes = this.state.activeNotes.filter((note) => {
+    const archivedNotes = this.state.archivedNotes.filter((note) => {
       return note.title
         .toLowerCase()
         .includes(this.state.keyword.toLowerCase());
@@ -111,12 +110,12 @@ class Home extends Component {
           keywordChange={this.onKeywordChangeHandler}
         />
         <section className='mb-4'>
-          <h2 className='font-bold text-lg'>Active Notes</h2>
-          {activeNotes.length === 0 ? (
-            <p className='text-center text-rose-400'>Empty Data</p>
+          <h2 className='font-bold text-lg'>Archived Notes</h2>
+          {archivedNotes.length === 0 ? (
+            <p className='text-center text-rose-400'>Empty data</p>
           ) : (
             <NoteList
-              notes={activeNotes}
+              notes={archivedNotes}
               onDelete={this.onDeleteHandler}
               onArchive={this.onArchiveHandler}
               onUnarchive={this.onUnarchiveHandler}
@@ -127,8 +126,3 @@ class Home extends Component {
     );
   }
 }
-
-Home.propTypes = {
-  defaultKeyword: PropTypes.string,
-  keywordChange: PropTypes.func.isRequired,
-};
