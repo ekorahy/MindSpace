@@ -5,11 +5,15 @@ import { RegisterInput } from '../components/molekul/RegisterInput';
 export const Register = () => {
   const navigate = useNavigate();
 
-  async function onRegisterHandler(name, email, password) {
-    const { error } = await register({ name, email, password });
+  async function onRegisterHandler(name, email, password, confirmPassword) {
+    if (password !== confirmPassword) {
+      alert('The password you entered in not same.');
+    } else {
+      const { error } = await register({ name, email, password });
 
-    if (!error) {
-      navigate('/');
+      if (!error) {
+        navigate('/');
+      }
     }
   }
 

@@ -5,10 +5,12 @@ export const RegisterInput = ({ register }) => {
   const [name, onNameChangeHandler] = useInput('');
   const [email, onEmailChangeHandler] = useInput('');
   const [password, onPasswordChangeHandler] = useInput('');
+  const [confirmPassword, onConfirmPasswordChangeHandler] = useInput(''); 
 
   function onSubmitHandler(event) {
     event.preventDefault();
-    register(name, email, password);
+
+    register(name, email, password, confirmPassword);
   }
 
   return (
@@ -35,6 +37,14 @@ export const RegisterInput = ({ register }) => {
         placeholder='Password'
         value={password}
         onChange={onPasswordChangeHandler}
+        required
+      />
+      <input
+        className='p-2 border rounded-md mb-2'
+        type='text'
+        placeholder='Password'
+        value={confirmPassword}
+        onChange={onConfirmPasswordChangeHandler}
         required
       />
       <button
