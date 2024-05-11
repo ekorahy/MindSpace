@@ -1,66 +1,43 @@
-import React, { Component } from 'react';
+import { useInput } from '../../custom_hooks/useInput';
+import PropTypes from 'prop-types';
 
-export default class LoginInput extends Component {
-  constructor(props) {
-    super(props);
+export const LoginInput = ({ login }) => {
+  const [email, onEmailChangeHandler] = useInput('');
+  const [password, onPasswordChangeHandler] = useInput('');
 
-    this.state = {
-      email: '',
-      password: '',
-    };
-
-    this.onEmailChangeHandler = this.onEmailChangeHandler.bind(this);
-    this.onPasswordChangeHandler = this.onPasswordChangeHandler.bind(this);
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
-  }
-
-  onEmailChangeHandler(event) {
-    this.setState(() => {
-      return { email: event.target.value };
-    });
-  }
-
-  onPasswordChangeHandler(event) {
-    this.setState(() => {
-      return { password: event.target.value };
-    });
-  }
-
-  onSubmitHandler(event) {
+  function onSubmitHandler(event) {
     event.preventDefault();
-
-    this.props.login({
-      email: this.state.email,
-      password: this.state.password,
-    });
+    login(email, password);
   }
 
-  render() {
-    return (
-      <form className='grid grid-cols-1' onSubmit={this.onSubmitHandler}>
-        <input
-          className='p-2 border rounded-md mb-2'
-          type='text'
-          placeholder='Email'
-          value={this.state.email}
-          onChange={this.onEmailChangeHandler}
-          required
-        />
-        <input
-          className='p-2 border rounded-md mb-2'
-          type='text'
-          placeholder='Password'
-          value={this.state.password}
-          onChange={this.onPasswordChangeHandler}
-          required
-        />
-        <button
-          className='p-2 bg-violet-400 rounded-md mb-4 hover:bg-violet-500 bg-4'
-          type='submit'
-        >
-          Login
-        </button>
-      </form>
-    );
-  }
-}
+  return (
+    <form className='grid grid-cols-1' onSubmit={onSubmitHandler}>
+      <input
+        className='p-2 border rounded-md mb-2'
+        type='text'
+        placeholder='Email'
+        value={email}
+        onChange={onEmailChangeHandler}
+        required
+      />
+      <input
+        className='p-2 border rounded-md mb-2'
+        type='text'
+        placeholder='Password'
+        value={password}
+        onChange={onPasswordChangeHandler}
+        required
+      />
+      <button
+        className='p-2 bg-violet-400 rounded-md mb-4 hover:bg-violet-500 bg-4'
+        type='submit'
+      >
+        Login
+      </button>
+    </form>
+  );
+};
+
+LoginInput.propTypes = {
+  login: PropTypes.func.isRequired,
+};

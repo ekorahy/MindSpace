@@ -1,13 +1,13 @@
-import { useNavigate } from 'react-router-dom'
-import NoteInput from '../components/molekul/NoteInput'
-import { addNote } from '../data/remote/remote'
+import { useNavigate } from 'react-router-dom';
+import { NoteInput } from '../components/molekul/NoteInput';
+import { addNote } from '../data/remote/remote';
 
 export const Add = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  function onAddNoteHandler(note) {
-    addNote(note)
-    navigate('/')
+  function onAddNoteHandler(title, body) {
+    addNote({ title, body });
+    navigate('/');
   }
 
   return (
@@ -15,5 +15,5 @@ export const Add = () => {
       <h2 className='font-bold text-lg mb-4'>Add note</h2>
       <NoteInput addNote={onAddNoteHandler} />
     </div>
-  )
-}
+  );
+};

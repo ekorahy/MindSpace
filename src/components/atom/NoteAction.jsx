@@ -1,4 +1,4 @@
-import { MdArchive, MdUnarchive, MdDelete } from "react-icons/md";
+import { MdArchive, MdUnarchive, MdDelete } from 'react-icons/md';
 import PropTypes from 'prop-types';
 
 export const NoteAction = ({
@@ -40,5 +40,5 @@ NoteAction.propTypes = {
   archived: PropTypes.bool.isRequired,
   onDelete: PropTypes.func.isRequired,
   onArchive: PropTypes.func.isRequired,
-  onUnarchive: PropTypes.func.isRequired
-}
+  onUnarchive: PropTypes.func.isRequired,
+};

@@ -1,9 +1,8 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { showFormattedDate } from '../utils';
 import parse from 'html-react-parser';
 import { MdArchive, MdUnarchive, MdDelete } from 'react-icons/md';
-import PropTypes from 'prop-types';
 import {
   archiveNote,
   deleteNote,
@@ -11,94 +10,65 @@ import {
   unarchiveNote,
 } from '../data/remote/remote';
 
-export const DetailWrapper = () => {
+export const Detail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  return (
-    <Detail id={id} navigate={navigate} />
-  )
-}
+  const [note, setNote] = useState([]);
 
-class Detail extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      note: [],
-    };
-
-    this.onDeleteHandler = this.onDeleteHandler.bind(this);
-    this.onArchiveHandler = this.onArchiveHandler.bind(this);
-    this.onUnarchiveHandler = this.onUnarchiveHandler.bind(this);
-  }
-
-  async componentDidMount() {
-    const { data } = await getNote(this.props.id);
-
-    this.setState(() => {
-      return {
-        note: data,
-      };
+  useEffect(() => {
+    getNote(id).then(({ data }) => {
+      setNote(data);
     });
+  }, [id]);
+
+  function onDeleteHandler(id) {
+    deleteNote(id);
+
+    navigate('/');
   }
 
-  async onDeleteHandler(id) {
-    await deleteNote(id);
+  function onArchiveHandler(id) {
+    archiveNote(id);
 
-    this.props.navigate('/');
+    navigate('/archived');
   }
 
-  async onArchiveHandler(id) {
-    await archiveNote(id);
+  function onUnarchiveHandler(id) {
+    unarchiveNote(id);
 
-    this.props.navigate('/archived');
+    navigate('/');
   }
 
-  async onUnarchiveHandler(id) {
-    await unarchiveNote(id);
+  const { title, createdAt, body, archived } = note;
 
-    this.props.navigate('/');
-  }
-
-  render() {
-    const id = this.state.note.id;
-
-    return (
-      <div className='mt-16'>
-        <h3 className='font-bold text-3xl'>{this.state.note.title}</h3>
-        <p className='font-light text-lg'>
-          {showFormattedDate(this.state.note.createdAt)}
-        </p>
-        <p className='text-lg'>{parse(`${this.state.note.body}`)}</p>
-        <div className='my-8 flex justify-end gap-2'>
-          {this.state.note.archived ? (
-            <button
-              className='bg-yellow-400 text-white text-lg p-3 rounded-md hover:bg-yellow-600'
-              onClick={() => this.onUnarchiveHandler(id)}
-            >
-              <MdUnarchive />
-            </button>
-          ) : (
-            <button
-              className='bg-slate-400 text-white text-lg p-3 rounded-md hover:bg-slate-600'
-              onClick={() => this.onArchiveHandler(id)}
-            >
-              <MdArchive />
-            </button>
-          )}
+  return (
+    <div className='mt-16'>
+      <h3 className='font-bold text-3xl'>{title}</h3>
+      <p className='font-light text-lg'>{showFormattedDate(createdAt)}</p>
+      <p className='text-lg'>{parse(`${body}`)}</p>
+      <div className='my-8 flex justify-end gap-2'>
+        {archived ? (
           <button
-            className='bg-rose-400 text-white text-lg p-3 rounded-md hover:bg-rose-600'
-            onClick={() => this.onDeleteHandler(id)}
+            className='bg-yellow-400 text-white text-lg p-3 rounded-md hover:bg-yellow-600'
+            onClick={() => onUnarchiveHandler(id)}
           >
-            <MdDelete />
+            <MdUnarchive />
           </button>
-        </div>
+        ) : (
+          <button
+            className='bg-slate-400 text-white text-lg p-3 rounded-md hover:bg-slate-600'
+            onClick={() => onArchiveHandler(id)}
+          >
+            <MdArchive />
+          </button>
+        )}
+        <button
+          className='bg-rose-400 text-white text-lg p-3 rounded-md hover:bg-rose-600'
+          onClick={() => onDeleteHandler(id)}
+        >
+          <MdDelete />
+        </button>
       </div>
-    );
-  }
-}
-
-Detail.propTypes = {
-  id: PropTypes.string.isRequired,
-  navigate: PropTypes.func.isRequired,
+    </div>
+  );
 };

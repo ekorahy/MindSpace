@@ -1,10 +1,10 @@
-import React from 'react';
 import { login } from '../data/remote/remote';
-import LoginInput from '../components/molekul/LoginInput';
+import { LoginInput } from '../components/molekul/LoginInput';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const Login = ({ loginSuccess }) => {
-  async function onLogin({ email, password }) {
+  async function onLogin(email, password) {
     const { error, data } = await login({ email, password });
 
     if (!error) {
@@ -29,4 +29,8 @@ export const Login = ({ loginSuccess }) => {
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  loginSuccess: PropTypes.func.isRequired,
 };
