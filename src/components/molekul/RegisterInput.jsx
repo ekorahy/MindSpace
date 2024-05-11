@@ -1,11 +1,11 @@
 import { useInput } from '../../custom_hooks/useInput';
 import PropTypes from 'prop-types';
 
-export const RegisterInput = ({ register }) => {
+export const RegisterInput = ({ register, loading }) => {
   const [name, onNameChangeHandler] = useInput('');
   const [email, onEmailChangeHandler] = useInput('');
   const [password, onPasswordChangeHandler] = useInput('');
-  const [confirmPassword, onConfirmPasswordChangeHandler] = useInput(''); 
+  const [confirmPassword, onConfirmPasswordChangeHandler] = useInput('');
 
   function onSubmitHandler(event) {
     event.preventDefault();
@@ -51,7 +51,7 @@ export const RegisterInput = ({ register }) => {
         className='p-2 bg-violet-400 rounded-md hover:bg-violet-500 mb-4'
         type='submit'
       >
-        Register
+        {`${loading ? 'Loading...' : 'Register'}`}
       </button>
     </form>
   );
@@ -59,4 +59,5 @@ export const RegisterInput = ({ register }) => {
 
 RegisterInput.propTypes = {
   register: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };

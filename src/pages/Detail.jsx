@@ -14,10 +14,12 @@ export const Detail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [note, setNote] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getNote(id).then(({ data }) => {
       setNote(data);
+      setLoading(false);
     });
   }, [id]);
 
@@ -41,6 +43,9 @@ export const Detail = () => {
 
   const { title, createdAt, body, archived } = note;
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className='mt-16'>
       <h3 className='font-bold text-3xl'>{title}</h3>

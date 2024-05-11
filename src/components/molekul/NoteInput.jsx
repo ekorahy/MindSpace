@@ -1,7 +1,7 @@
 import { useInput } from '../../custom_hooks/useInput';
 import PropTypes from 'prop-types';
 
-export const NoteInput = ({ addNote }) => {
+export const NoteInput = ({ addNote, loading }) => {
   const [title, onTitleChangeHandler] = useInput('');
   const [body, onBodyChangeHandler] = useInput('', true);
 
@@ -41,7 +41,7 @@ export const NoteInput = ({ addNote }) => {
         className='w-full p-3 bg-violet-400 rounded-md text-white hover:bg-violet-600'
         type='submit'
       >
-        Add
+        {`${loading ? 'Loading...' : 'Add'}`}
       </button>
     </form>
   );
@@ -49,4 +49,5 @@ export const NoteInput = ({ addNote }) => {
 
 NoteInput.propTypes = {
   addNote: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };

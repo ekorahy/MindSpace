@@ -16,30 +16,38 @@ export const Archived = () => {
   const [keyword, setKeyword] = useState(() => {
     return searchParams.get('keyword') || '';
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getArchivedNotes().then(({ data }) => {
       setArchivedNotes(data);
+      setLoading(false);
     });
   }, []);
 
   async function onDeleteHandler(id) {
     await deleteNote(id);
 
-    const { data } = await getArchivedNotes();
-    setArchivedNotes(data);
+    const { error, data } = await getArchivedNotes();
+    if (!error) {
+      setArchivedNotes(data);
+    }
   }
 
-  function onArchiveHandler(id) {
-    archiveNote(id);
+  async function onArchiveHandler(id) {
+    const { error } = await archiveNote(id);
 
-    navigate('/archived');
+    if (!error) {
+      navigate('/archived');
+    }
   }
 
-  function onUnarchiveHandler(id) {
-    unarchiveNote(id);
+  async function onUnarchiveHandler(id) {
+    const { error } = await unarchiveNote(id);
 
-    navigate('/');
+    if (!error) {
+      navigate('/');
+    }
   }
 
   function onKeywordChangeHandler(keyword) {
@@ -50,6 +58,10 @@ export const Archived = () => {
   const filteredNotes = archivedNotes.filter((note) => {
     return note.title.toLowerCase().includes(keyword.toLowerCase());
   });
+
+  if (loading) {
+    return <p>Loading ...</p>;
+  }
 
   return (
     <div>

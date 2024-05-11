@@ -9,37 +9,45 @@ import {
   unarchiveNote,
 } from '../data/remote/remote';
 
-export const Home = () => {
+export const Main = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeNotes, setActiveNotes] = useState([]);
   const [keyword, setKeyword] = useState(() => {
     return searchParams.get('keyword') || '';
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getActiveNotes().then(({ data }) => {
       setActiveNotes(data);
+      setLoading(false);
     });
   }, []);
 
   async function onDeleteHandler(id) {
     await deleteNote(id);
 
-    const { data } = await getActiveNotes();
-    setActiveNotes(data);
+    const { error, data } = await getActiveNotes();
+    if (!error) {
+      setActiveNotes(data);
+    }
   }
 
-  function onArchiveHandler(id) {
-    archiveNote(id);
+  async function onArchiveHandler(id) {
+    const { error } = await archiveNote(id);
 
-    navigate('/archived');
+    if (!error) {
+      navigate('/archived');
+    }
   }
 
-  function onUnarchiveHandler(id) {
-    unarchiveNote(id);
+  async function onUnarchiveHandler(id) {
+    const { error } = await unarchiveNote(id);
 
-    navigate('/');
+    if (!error) {
+      navigate('/');
+    }
   }
 
   function onKeywordChangeHandler(keyword) {
@@ -50,6 +58,10 @@ export const Home = () => {
   const filteredNotes = activeNotes.filter((note) => {
     return note.title.toLowerCase().includes(keyword.toLowerCase());
   });
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>

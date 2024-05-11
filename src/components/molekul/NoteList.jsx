@@ -15,7 +15,6 @@ export const NoteList = ({ notes, onDelete, onArchive, onUnarchive }) => {
           onDelete={onDelete}
           onArchive={onArchive}
           onUnarchive={onUnarchive}
-          {...note}
         />
       ))}
     </div>

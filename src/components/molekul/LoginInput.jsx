@@ -1,7 +1,7 @@
 import { useInput } from '../../custom_hooks/useInput';
 import PropTypes from 'prop-types';
 
-export const LoginInput = ({ login }) => {
+export const LoginInput = ({ login, loading }) => {
   const [email, onEmailChangeHandler] = useInput('');
   const [password, onPasswordChangeHandler] = useInput('');
 
@@ -32,7 +32,7 @@ export const LoginInput = ({ login }) => {
         className='p-2 bg-violet-400 rounded-md mb-4 hover:bg-violet-500 bg-4'
         type='submit'
       >
-        Login
+        {`${loading ? 'Loading...' : 'Log in'}`}
       </button>
     </form>
   );
@@ -40,4 +40,5 @@ export const LoginInput = ({ login }) => {
 
 LoginInput.propTypes = {
   login: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
