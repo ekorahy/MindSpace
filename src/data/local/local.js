@@ -3,6 +3,7 @@ let articles = [
     id: 'article-1',
     image: '/public/articles/article-1.jpg',
     title: 'Capturing Ideas: Unlocking the Door to Creativity',
+    author: 'ekorahy',
     readingTime: '6 Min',
     createdAt: 'May 12, 2024',
     isPopular: true,
