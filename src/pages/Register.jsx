@@ -16,7 +16,7 @@ export const Register = () => {
       const { error } = await register({ name, email, password });
       setLoading(false);
       if (!error) {
-        navigate('/');
+        navigate('/login');
       }
     }
   }
@@ -30,7 +30,7 @@ export const Register = () => {
           Back to{' '}
           <Link
             className='font-bold text-violet-400 hover:text-violet-500'
-            to='/'
+            to='/login'
           >
             Log in
           </Link>

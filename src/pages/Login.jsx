@@ -1,10 +1,11 @@
 import { login } from '../data/remote/remote';
 import { LoginInput } from '../components/molekul/LoginInput';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 export const Login = ({ loginSuccess }) => {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
 
   async function onLogin(email, password) {
@@ -13,6 +14,7 @@ export const Login = ({ loginSuccess }) => {
     setLoading(false);
     if (!error) {
       loginSuccess(data);
+      navigate('/')
     }
   }
 

@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Add } from './pages/Add';
 import { useEffect, useState } from 'react';
 import { getUserLogged, putAccessToken } from './data/remote/remote';
@@ -7,6 +7,8 @@ import { Register } from './pages/Register';
 import { Main } from './pages/Main';
 import { Archived } from './pages/Archived';
 import { Detail } from './pages/Detail';
+import { Home } from './pages/Home';
+import { Navigation } from './components/molekul/Navigation';
 
 export const App = () => {
   const [authedUser, setAuthedUser] = useState(null);
@@ -37,47 +39,33 @@ export const App = () => {
 
   if (authedUser === null) {
     return (
-      <main>
-        <Routes>
-          <Route path='/*' element={<Login loginSuccess={onLoginSucces} />} />
-          <Route path='/register' element={<Register />} />
-        </Routes>
-      </main>
-    );
-  } else {
-    const { name, email } = authedUser;
-    return (
       <>
-        <header className='p-4'>
-          <nav className='max-w-6xl flex justify-between mx-auto'>
-            <Link to='/'>
-              <img
-                className='h-10 rounded-full'
-                src='/public/logo.jpg'
-                alt='logo image'
-              />
-            </Link>
-            <div className='flex items-center gap-4'>
-              <button
-                className='font-bold text-rose-400 hover:text-rose-500'
-                onClick={() => onLogoutHandler()}
-              >
-                {name} Log out
-              </button>
-              <Link className='font-bold hover:text-violet-400' to={'/add'}>
-                Add
-              </Link>
-              <Link
-                className='font-bold hover:text-violet-400'
-                to={'/archived'}
-              >
-                Archived
-              </Link>
-            </div>
-          </nav>
+        <header className='w-full fixed z-20 top-0 p-4 bg-slate-400/3 backdrop-blur-md sm:px-6 md:px-8'>
+          <Navigation logout={onLogoutHandler} authedUser={authedUser} />
         </header>
 
-        <main className='p-4'>
+        <main className='p-4 my-20 sm:px-6 md:px-8'>
+          <div className='max-w-6xl mx-auto'>
+            <Routes>
+              <Route path='/*' element={<Home />} />
+              <Route
+                path='/login'
+                element={<Login loginSuccess={onLoginSucces} />}
+              />
+              <Route path='/register' element={<Register />} />
+            </Routes>
+          </div>
+        </main>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <header className='w-full fixed z-20 top-0 p-4 bg-slate-400/3 backdrop-blur-md sm:px-6 md:px-8'>
+          <Navigation logout={onLogoutHandler} authedUser={authedUser} />
+        </header>
+
+        <main className='p-4 my-20'>
           <div className='max-w-6xl mx-auto'>
             <Routes>
               <Route path='/' element={<Main />} />
