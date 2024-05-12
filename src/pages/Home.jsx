@@ -1,5 +1,9 @@
+import { Hero } from '../components/molekul/Hero';
+
 export const Home = () => {
   return (
-    <div>Home Page</div>
-  )
-}
+    <div>
+      <Hero />
+    </div>
+  );
+};

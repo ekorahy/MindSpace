@@ -44,8 +44,8 @@ export const App = () => {
           <Navigation logout={onLogoutHandler} authedUser={authedUser} />
         </header>
 
-        <main className='p-4 my-20 sm:px-6 md:px-8'>
-          <div className='max-w-6xl mx-auto'>
+        <main className='p-4 my-20 sm:px-6 md:px-8 md:my-32'>
+          <div className='max-w-screen-xl mx-auto'>
             <Routes>
               <Route path='/*' element={<Home />} />
               <Route
