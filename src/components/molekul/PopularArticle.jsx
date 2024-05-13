@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 export const PopularArticle = ({ articles }) => {
   return (
-    <div className='my-10'>
+    <div className='my-10 xl:my-20'>
       <div className='flex items-center justify-between'>
         <h2 className='font-bold text-lg xl:text-2xl'>Most popular Article</h2>
         <Link

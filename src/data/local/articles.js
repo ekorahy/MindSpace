@@ -72,4 +72,4 @@ function getMostPopularArticle() {
   return popularArticles.slice(0, 1);
 }
 
-export { articles, getArticles, getArticle, getMostPopularArticle };
+export { getArticles, getArticle, getMostPopularArticle };

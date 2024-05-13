@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   return (
-    <div className='sm:flex flex-row-reverse items-center'>
+    <div className='sm:flex flex-row-reverse items-center my-8'>
       <div className='basis-1/2'>
         <img src='/public/hero.png' alt='' />
       </div>
