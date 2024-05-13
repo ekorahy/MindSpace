@@ -42,13 +42,13 @@ export const RegisterInput = ({ register, loading }) => {
       <input
         className='p-2 border rounded-md mb-2'
         type='text'
-        placeholder='Password'
+        placeholder='Confirm Password'
         value={confirmPassword}
         onChange={onConfirmPasswordChangeHandler}
         required
       />
       <button
-        className='p-2 bg-violet-400 rounded-md hover:bg-violet-500 mb-4'
+        className='p-2 text-white bg-violet-400 rounded-md hover:bg-violet-500 mb-4'
         type='submit'
       >
         {`${loading ? 'Loading...' : 'Register'}`}

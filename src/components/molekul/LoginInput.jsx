@@ -29,7 +29,7 @@ export const LoginInput = ({ login, loading }) => {
         required
       />
       <button
-        className='p-2 bg-violet-400 rounded-md mb-4 hover:bg-violet-500 bg-4'
+        className='p-2 text-white bg-violet-400 rounded-md mb-4 hover:bg-violet-500 bg-4'
         type='submit'
       >
         {`${loading ? 'Loading...' : 'Log in'}`}
