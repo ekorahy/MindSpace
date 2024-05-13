@@ -9,6 +9,7 @@ import { Archived } from './pages/Archived';
 import { Detail } from './pages/Detail';
 import { Home } from './pages/Home';
 import { Navigation } from './components/molekul/Navigation';
+import { Footer } from './components/molekul/Footer';
 
 export const App = () => {
   const [authedUser, setAuthedUser] = useState(null);
@@ -56,6 +57,8 @@ export const App = () => {
             </Routes>
           </div>
         </main>
+
+        <Footer />
       </>
     );
   } else {
