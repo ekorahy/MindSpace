@@ -2,27 +2,27 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <footer>
-      <div className='bg-violet-400'>
-        <div className='max-w-screen-xl h-max p-4 mx-auto flex justify-between'>
+    <footer className='bg-violet-400'>
+      <div className='p-4 sm:px-8 md:px-16'>
+        <div className='max-w-screen-xl h-max mx-auto flex justify-between'>
           <div>
             <ul>
-              <li>
+              <li className='sm:my-2'>
                 <Link className='font-light text-white hover:font-bold' to='/'>
                   Home
                 </Link>
               </li>
-              <li>
+              <li className='sm:my-2'>
                 <Link className='font-light text-white hover:font-bold' to='/'>
                   About
                 </Link>
               </li>
-              <li>
+              <li className='sm:my-2'>
                 <Link className='font-light text-white hover:font-bold' to='/'>
                   Articles
                 </Link>
               </li>
-              <li>
+              <li className='sm:my-2'>
                 <Link className='font-light text-white hover:font-bold' to='/'>
                   FAQ
                 </Link>
@@ -39,7 +39,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className='bg-white'>
         <p className='font-light p-2 text-center'>&copy;2024 - MindSpace</p>
       </div>
     </footer>

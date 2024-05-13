@@ -11,7 +11,7 @@ export const FAQ = () => {
   }, []);
 
   return (
-    <div className='my-10'>
+    <section className='my-10 scroll-mt-20' id='FAQ'>
       <div className='text-center'>
         <h2 className='font-bold text-xl'>FAQ</h2>
         <p className='font-light'>(Frequently Asked Questions)</p>
@@ -21,6 +21,6 @@ export const FAQ = () => {
           <FAQItem key={faqItem.id} title={faqItem.title} body={faqItem.body} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };

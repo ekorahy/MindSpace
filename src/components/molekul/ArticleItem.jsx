@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { IoIosTimer } from 'react-icons/io';
 import { SlCalender } from 'react-icons/sl';
 import PropTypes from 'prop-types';
+import parse from 'html-react-parser';
 
 export const ArticleItem = ({
   id,
@@ -33,7 +34,7 @@ export const ArticleItem = ({
             {createdAt}
           </p>
         </div>
-        <p className='line-clamp-3 mb-2 xl:text-xl'>{body}</p>
+        <p className='line-clamp-3 mb-2 xl:text-xl'>{parse(`${body}`)}</p>
         <Link
           className='text-violet-400 hover:text-violet-500 xl:text-xl'
           to={`/article/detail/${id}`}

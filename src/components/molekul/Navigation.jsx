@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { VscAccount } from 'react-icons/vsc';
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
 import PropTypes from 'prop-types'
+import { HashLink } from 'react-router-hash-link';
 
 export const Navigation = ({ logout, authedUser }) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -72,20 +73,20 @@ export const Navigation = ({ logout, authedUser }) => {
                 <Link className='p-2 hover:text-violet-400' to={'/articles'}>
                   Articles
                 </Link>
-                <Link className='p-2 hover:text-violet-400' to={'/faq'}>
+                <HashLink smooth className='p-2 hover:text-violet-400' to={'/#FAQ'}>
                   FAQ
-                </Link>
+                </HashLink>
               </div>
             </div>
             <div className='hidden sm:flex items-center gap-2'>
               <Link
-                className='py-1 px-4 rounded bg-violet-400 border border-violet-400 text-white hover:bg-violet-500 hover:border-violet-500'
+                className='py-1 px-4 bg-violet-400 border border-violet-400 text-white hover:bg-violet-500 hover:border-violet-500'
                 to={'/login'}
               >
                 Login
               </Link>
               <Link
-                className='py-1 px-4 rounded border border-violet-400 hover:bg-violet-500 hover:border-violet-500 hover:text-white'
+                className='py-1 px-4 border border-violet-400 hover:bg-violet-500 hover:border-violet-500 hover:text-white'
                 to={'/register'}
               >
                 Register
@@ -132,13 +133,13 @@ export const Navigation = ({ logout, authedUser }) => {
                 <Link to='/'>Home</Link>
               </li>
               <li className='p-2 mb-1 border-b hover:bg-violet-400 hover:text-white'>
-                <Link to='/'>About</Link>
+                <Link to='/about'>About</Link>
               </li>
               <li className='p-2 mb-1 border-b hover:bg-violet-400 hover:text-white'>
-                <Link to='/'>Articles</Link>
+                <Link to='/articles'>Articles</Link>
               </li>
               <li className='p-2 mb-1 border-b hover:bg-violet-400 hover:text-white'>
-                <Link to='/'>FAQ</Link>
+                <HashLink smooth to={'/#FAQ'}>FAQ</HashLink>
               </li>
               <li className='p-2 mt-4 mb-1 text-center bg-violet-400 text-white hover:bg-violet-500'>
                 <Link to='/login'>Login</Link>

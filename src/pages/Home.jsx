@@ -15,12 +15,12 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Hero />
       <PopularArticle articles={articles} />
       <Services />
       <Testimonial />
       <FAQ />
-    </div>
+    </>
   );
 };

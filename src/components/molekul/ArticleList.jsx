@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const ArticleList = ({ articles }) => {
   return (
-    <div>
+    <>
       {articles.map((article) => (
         <ArticleItem
           key={article.id}
@@ -16,7 +16,7 @@ export const ArticleList = ({ articles }) => {
           body={article.body}
         />
       ))}
-    </div>
+    </>
   );
 };
 
