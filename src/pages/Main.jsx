@@ -8,8 +8,10 @@ import {
   getActiveNotes,
   unarchiveNote,
 } from '../data/remote/remote';
+import { Welcome } from '../components/molekul/Welcome';
+import PropTypes from 'prop-types';
 
-export const Main = () => {
+export const Main = ({ name }) => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeNotes, setActiveNotes] = useState([]);
@@ -65,6 +67,7 @@ export const Main = () => {
 
   return (
     <div>
+      <Welcome name={name} />
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <section className='mb-4'>
         <h2 className='font-bold text-lg'>Active Notes</h2>
@@ -81,4 +84,8 @@ export const Main = () => {
       </section>
     </div>
   );
+};
+
+Main.propTypes = {
+  name: PropTypes.string.isRequired,
 };

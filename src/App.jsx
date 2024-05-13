@@ -70,20 +70,26 @@ export const App = () => {
   } else {
     return (
       <>
-        <header className='w-full fixed z-20 top-0 p-4 bg-slate-400/3 backdrop-blur-md sm:px-6 md:px-8'>
+        <header className='w-full fixed z-20 top-0 p-4 bg-slate-400/3 backdrop-blur-md sm:px-8 md:px-16'>
           <Navigation logout={onLogoutHandler} authedUser={authedUser} />
         </header>
 
-        <main className='p-4 my-20'>
-          <div className='max-w-6xl mx-auto'>
+        <main className='p-4 mt-20 sm:px-8 md:px-16 md:mt-32'>
+          <div className='max-w-screen-xl mx-auto'>
             <Routes>
-              <Route path='/' element={<Main />} />
+              <Route path='/' element={<Main name={authedUser.name} />} />
               <Route path='/detail/:id' element={<Detail />} />
               <Route path='/add' element={<Add />} />
               <Route path='/archived' element={<Archived />} />
             </Routes>
           </div>
         </main>
+
+        <footer className='bg-violet-400'>
+          <p className='font-light p-2 text-white text-center'>
+            &copy;2024 - MindSpace
+          </p>
+        </footer>
       </>
     );
   }

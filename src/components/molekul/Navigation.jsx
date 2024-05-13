@@ -50,9 +50,9 @@ export const Navigation = ({ logout, authedUser }) => {
             </div>
             <button
               onClick={() => onProfileHandler()}
-              className='hidden sm:flex items-center gap-1 font-bold'
+              className='hidden sm:flex items-center font-bold'
             >
-              <VscAccount className='inline text-2xl' /> {authedUser.name}
+              <VscAccount className='inline text-2xl' /> 
               {!openProfile ? (
                 <MdOutlineArrowDropDown className='text-2xl' />
               ) : (
@@ -153,12 +153,12 @@ export const Navigation = ({ logout, authedUser }) => {
       </div>
       <div className={`${!openProfile && 'hidden'} absolute right-0`}>
         {authedUser !== null && (
-          <div className='h-max z-50 w-40 p-4 bg-slate-50 rounded-md'>
+          <div className='h-max z-50 w-60 p-8 bg-slate-50 rounded-md'>
             <div className='w-full mx-auto text-center pb-4 border-b'>
-              <div className='w-max text-4xl mx-auto'>
+              <div className='w-max text-6xl mx-auto mb-2'>
                 <VscAccount />
               </div>
-              <h2 className='font-bold'>{authedUser.name}</h2>
+              <h2 className='font-bold text-xl'>{authedUser.name}</h2>
               <p className='font-light'>{authedUser.email}</p>
             </div>
             <button
