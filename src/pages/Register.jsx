@@ -1,11 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../data/remote/remote';
 import { RegisterInput } from '../components/molekul/RegisterInput';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 export const Register = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const { language } = useContext(LanguageContext);
 
   async function onRegisterHandler(name, email, password, confirmPassword) {
     setLoading(true);
@@ -27,12 +29,12 @@ export const Register = () => {
         <h2 className='font-bold text-xl mb-4'>Register Form</h2>
         <RegisterInput register={onRegisterHandler} loading={loading} />
         <p className='text-center font-light'>
-          Back to{' '}
+          {language === 'en' ? 'Back to ' : 'Kembali ke '}
           <Link
             className='font-bold text-violet-400 hover:text-violet-500'
             to='/login'
           >
-            Log in
+            {language === 'en' ? 'Log in' : 'Masuk'}
           </Link>
         </p>
       </div>

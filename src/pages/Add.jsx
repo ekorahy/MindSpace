@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { NoteInput } from '../components/molekul/NoteInput';
 import { addNote } from '../data/remote/remote';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 export const Add = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const { language } = useContext(LanguageContext);
 
   async function onAddNoteHandler(title, body) {
     setLoading(true);
@@ -18,7 +20,9 @@ export const Add = () => {
 
   return (
     <div>
-      <h2 className='font-bold text-lg mb-4 dark:text-white'>Add note</h2>
+      <h2 className='font-bold text-lg mb-4 dark:text-white'>
+        {language === 'en' ? 'Add Note' : 'Tambah Catatan'}
+      </h2>
       <NoteInput addNote={onAddNoteHandler} loading={loading} />
     </div>
   );

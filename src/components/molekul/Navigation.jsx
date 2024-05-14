@@ -6,6 +6,7 @@ import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import { HashLink } from 'react-router-hash-link';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { CiLight } from 'react-icons/ci';
 import { CiDark } from 'react-icons/ci';
 
@@ -13,6 +14,7 @@ export const Navigation = ({ logout, authedUser }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const { language, toggleLanguage } = useContext(LanguageContext);
   function onMenuHandler() {
     setOpenMenu(!openMenu);
   }
@@ -45,13 +47,13 @@ export const Navigation = ({ logout, authedUser }) => {
             <div className='hidden sm:block'>
               <div className='flex items-center gap-4 dark:text-white'>
                 <Link className='p-2 hover:text-violet-400' to={'/'}>
-                  Home
+                  {language === 'en' ? 'Home' : 'Beranda'}
                 </Link>
                 <Link className='p-2 hover:text-violet-400' to={'/archived'}>
-                  Archived
+                  {language === 'en' ? 'Archived' : 'Diarsipkan'}
                 </Link>
                 <Link className='p-2 hover:text-violet-400' to={'/add'}>
-                  Add
+                  {language === 'en' ? 'Add' : 'Tambah'}
                 </Link>
               </div>
             </div>
@@ -75,26 +77,26 @@ export const Navigation = ({ logout, authedUser }) => {
                   className='p-2 dark:text-white hover:text-violet-400'
                   to={'/'}
                 >
-                  Home
+                  {language === 'en' ? 'Home' : 'Beranda'}
                 </Link>
                 <Link
                   className='p-2 dark:text-white hover:text-violet-400'
                   to={'/about'}
                 >
-                  About
+                  {language === 'en' ? 'About' : 'Tentang'}
                 </Link>
                 <Link
                   className='p-2 dark:text-white hover:text-violet-400'
                   to={'/articles'}
                 >
-                  Articles
+                  {language === 'en' ? 'Articles' : 'Artikel'}
                 </Link>
                 <HashLink
                   smooth
                   className='p-2 dark:text-white hover:text-violet-400'
                   to={'/#FAQ'}
                 >
-                  FAQ
+                  {language === 'en' ? 'FAQ' : 'FAQ'}
                 </HashLink>
               </div>
             </div>
@@ -104,21 +106,45 @@ export const Navigation = ({ logout, authedUser }) => {
                   className='py-1 px-4 bg-violet-400 border border-violet-400 text-white dark:text-black hover:bg-violet-500 hover:border-violet-500'
                   to={'/login'}
                 >
-                  Login
+                  {language === 'en' ? 'Login' : 'Masuk'}
                 </Link>
                 <Link
                   className='py-1 px-4 border dark:text-white dark:hover:text-black border-violet-400 hover:bg-violet-500 hover:border-violet-500 hover:text-white'
                   to={'/register'}
                 >
-                  Register
+                  {language === 'en' ? 'Register' : 'Daftar'}
                 </Link>
               </div>
-              <div>
+              <div className='flex gap-2'>
                 <button className='border p-2' onClick={toggleTheme}>
                   {theme === 'light' ? (
                     <CiLight />
                   ) : (
                     <CiDark className='dark:text-white' />
+                  )}
+                </button>
+                <button
+                  className='flex items-center text-sm gap-1 border p-2 dark:text-white'
+                  onClick={toggleLanguage}
+                >
+                  {language === 'en' ? (
+                    <>
+                      <img
+                        className='w-4'
+                        src='/public/flags/en-flag.png'
+                        alt=''
+                      />
+                      EN
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        className='w-4'
+                        src='/public/flags/id-flag.png'
+                        alt=''
+                      />
+                      ID
+                    </>
                   )}
                 </button>
               </div>
@@ -142,25 +168,52 @@ export const Navigation = ({ logout, authedUser }) => {
             </div>
             <ul className='mt-2'>
               <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/'>Home</Link>
+                <Link to='/'>{language === 'en' ? 'Home' : 'Beranda'}</Link>
               </li>
               <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/archived'>Archived</Link>
+                <Link to='/archived'>
+                  {language === 'en' ? 'Archived' : 'Diarsipkan'}
+                </Link>
               </li>
               <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/add'>Add</Link>
+                <Link to='/add'>{language === 'en' ? 'Add' : 'Tambah'}</Link>
               </li>
               <li className=' p-2 mt-4 mb-4 text-center bg-rose-400 text-white dark:text-black hover:bg-rose-500'>
                 <button onClick={() => logout()}>
-                  <RiLogoutBoxRLine className='inline' /> Log out
+                  <RiLogoutBoxRLine className='inline' />{' '}
+                  {language === 'en' ? 'Log out' : 'Keluar'}
                 </button>
               </li>
-              <li className='w-max mx-auto'>
+              <li className='w-max mx-auto flex gap-2'>
                 <button className='border p-2' onClick={toggleTheme}>
                   {theme === 'light' ? (
                     <CiLight />
                   ) : (
                     <CiDark className='dark:text-white' />
+                  )}
+                </button>
+                <button
+                  className='flex items-center text-sm gap-1 border p-2 dark:text-white'
+                  onClick={toggleLanguage}
+                >
+                  {language === 'en' ? (
+                    <>
+                      <img
+                        className='w-4'
+                        src='/public/flags/en-flag.png'
+                        alt=''
+                      />
+                      EN
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        className='w-4'
+                        src='/public/flags/id-flag.png'
+                        alt=''
+                      />
+                      ID
+                    </>
                   )}
                 </button>
               </li>
@@ -170,13 +223,17 @@ export const Navigation = ({ logout, authedUser }) => {
           <div className='h-max z-20 w-40 bg-slate-50 dark:bg-slate-950 rounded-md'>
             <ul className='p-4'>
               <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/'>Home</Link>
+                <Link to='/'>{language === 'en' ? 'Home' : 'Beranda'}</Link>
               </li>
               <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/about'>About</Link>
+                <Link to='/about'>
+                  {language === 'en' ? 'About' : 'Tentang'}
+                </Link>
               </li>
               <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/articles'>Articles</Link>
+                <Link to='/articles'>
+                  {language === 'en' ? 'Articles' : 'Artikel'}
+                </Link>
               </li>
               <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
                 <HashLink smooth to={'/#FAQ'}>
@@ -184,17 +241,43 @@ export const Navigation = ({ logout, authedUser }) => {
                 </HashLink>
               </li>
               <li className='p-2 mt-4 mb-1 text-center dark:text-black dark:hover:text-white bg-violet-400 text-white hover:bg-violet-500'>
-                <Link to='/login'>Login</Link>
+                <Link to='/login'>{language === 'en' ? 'Login' : 'Masuk'}</Link>
               </li>
               <li className='p-2 text-center border mb-4 dark:text-white dark:hover:text-black border-violet-400 hover:bg-violet-500 hover:border-violet-500 hover:text-white'>
-                <Link to='/register'>Register</Link>
+                <Link to='/register'>
+                  {language === 'en' ? 'Register' : 'Daftar'}
+                </Link>
               </li>
-              <li className='w-max mx-auto'>
+              <li className='w-max flex gap-2 mx-auto'>
                 <button className='border p-2' onClick={toggleTheme}>
                   {theme === 'light' ? (
                     <CiLight />
                   ) : (
                     <CiDark className='dark:text-white' />
+                  )}
+                </button>
+                <button
+                  className='flex items-center text-sm gap-1 border p-2 dark:text-white'
+                  onClick={toggleLanguage}
+                >
+                  {language === 'en' ? (
+                    <>
+                      <img
+                        className='w-4'
+                        src='/public/flags/en-flag.png'
+                        alt=''
+                      />
+                      EN
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        className='w-4'
+                        src='/public/flags/id-flag.png'
+                        alt=''
+                      />
+                      ID
+                    </>
                   )}
                 </button>
               </li>
@@ -216,14 +299,39 @@ export const Navigation = ({ logout, authedUser }) => {
               className='w-full p-2 mt-4 mb-4 text-center bg-rose-400 text-white dark:text-black hover:bg-rose-500'
               onClick={() => logout()}
             >
-              <RiLogoutBoxRLine className='inline' /> Log out
+              <RiLogoutBoxRLine className='inline' />{' '}
+              {language === 'en' ? 'Log out' : 'Keluar'}
             </button>
-            <div className='w-max mx-auto'>
+            <div className='w-max flex gap-2 mx-auto'>
               <button className='border p-2' onClick={toggleTheme}>
                 {theme === 'light' ? (
                   <CiLight />
                 ) : (
                   <CiDark className='dark:text-white' />
+                )}
+              </button>
+              <button
+                className='flex items-center text-sm gap-1 border p-2 dark:text-white'
+                onClick={toggleLanguage}
+              >
+                {language === 'en' ? (
+                  <>
+                    <img
+                      className='w-4'
+                      src='/public/flags/en-flag.png'
+                      alt=''
+                    />
+                    EN
+                  </>
+                ) : (
+                  <>
+                    <img
+                      className='w-4'
+                      src='/public/flags/id-flag.png'
+                      alt=''
+                    />
+                    ID
+                  </>
                 )}
               </button>
             </div>

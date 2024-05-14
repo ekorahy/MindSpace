@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { useInput } from '../../custom_hooks/useInput';
 import PropTypes from 'prop-types';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 export const NoteInput = ({ addNote, loading }) => {
   const [title, onTitleChangeHandler] = useInput('');
   const [body, onBodyChangeHandler] = useInput('', true);
+  const { language } = useContext(LanguageContext);
 
   function onSubmitHandler(event) {
     event.preventDefault();
@@ -14,20 +17,19 @@ export const NoteInput = ({ addNote, loading }) => {
     <form className='w-full dark:text-white' onSubmit={onSubmitHandler}>
       <div className='mb-4'>
         <label className='block mb-1' htmlFor='title'>
-          Title
+          {language === 'en' ? 'Title' : 'Judul'}
         </label>
         <input
           className='w-full border p-3 rounded-md dark:bg-black'
           id='title'
           type='text'
-          placeholder='Title'
           value={title}
           onChange={onTitleChangeHandler}
         />
       </div>
       <div className='mb-4'>
         <label className='mb-1' htmlFor='body'>
-          Body
+          {language === 'en' ? 'Body' : 'Isi'}
         </label>
         <div
           className='w-full h-40 border p-3 rounded-md'
@@ -41,7 +43,15 @@ export const NoteInput = ({ addNote, loading }) => {
         className='w-full p-3 bg-violet-400 rounded-md text-white dark:text-black hover:bg-violet-600'
         type='submit'
       >
-        {`${loading ? 'Loading...' : 'Add'}`}
+        {`${
+          loading
+            ? language === 'en'
+              ? 'Loading...'
+              : 'Memuat...'
+            : language === 'en'
+            ? 'Add'
+            : 'Tambah'
+        }`}
       </button>
     </form>
   );

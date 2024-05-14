@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { NoteList } from '../components/molekul/NoteList';
 import { SearchBar } from '../components/atom/SearchBar';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -10,6 +10,7 @@ import {
 } from '../data/remote/remote';
 import { Welcome } from '../components/molekul/Welcome';
 import PropTypes from 'prop-types';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 export const Main = ({ name }) => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export const Main = ({ name }) => {
     return searchParams.get('keyword') || '';
   });
   const [loading, setLoading] = useState(true);
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     getActiveNotes().then(({ data }) => {
@@ -70,9 +72,13 @@ export const Main = ({ name }) => {
       <Welcome name={name} />
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <section className='mb-4'>
-        <h2 className='font-bold text-lg dark:text-white'>Active Notes</h2>
+        <h2 className='font-bold text-lg dark:text-white'>
+          {language === 'en' ? 'Active Notes' : 'Catatan Aktif'}
+        </h2>
         {filteredNotes.length === 0 ? (
-          <p className='text-center text-rose-400'>Empty Data</p>
+          <p className='text-center text-rose-400'>
+            {language === 'en' ? 'Empty Data' : 'Data Kosong'}
+          </p>
         ) : (
           <NoteList
             notes={filteredNotes}

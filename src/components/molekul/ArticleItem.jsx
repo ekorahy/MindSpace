@@ -3,6 +3,8 @@ import { IoIosTimer } from 'react-icons/io';
 import { SlCalender } from 'react-icons/sl';
 import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
+import { useContext } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 export const ArticleItem = ({
   id,
@@ -13,6 +15,7 @@ export const ArticleItem = ({
   createdAt,
   body,
 }) => {
+  const { language } = useContext(LanguageContext);
   return (
     <div className='my-4 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10'>
       <img className='bg-red-100 w-full rounded mb-2' src={image} alt='' />
@@ -23,7 +26,9 @@ export const ArticleItem = ({
         >
           {title}
         </Link>
-        <h4 className='font-light dark:text-white mb-2 xl:text-lg xl:mt-2'>Author: {author}</h4>
+        <h4 className='font-light dark:text-white mb-2 xl:text-lg xl:mt-2'>
+          {language === 'en' ? 'Author' : 'Penulis'}: {author}
+        </h4>
         <div className='flex items-center gap-4 mb-2 xl:text-xl'>
           <p className='flex items-center gap-1 dark:text-white'>
             <IoIosTimer className='inline text-violet-400 text-2xl' />{' '}
@@ -34,12 +39,14 @@ export const ArticleItem = ({
             {createdAt}
           </p>
         </div>
-        <p className='line-clamp-3 mb-2 dark:text-white xl:text-xl'>{parse(`${body}`)}</p>
+        <div className='line-clamp-3 mb-2 dark:text-white xl:text-xl'>
+          {parse(`${body}`)}
+        </div>
         <Link
           className='text-violet-400 hover:text-violet-500 xl:text-xl'
           to={`/article/detail/${id}`}
         >
-          Read more...
+          {language === 'en' ? 'Read more' : 'Baca selengkapnya'}...
         </Link>
       </div>
     </div>

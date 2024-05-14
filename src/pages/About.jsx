@@ -1,4 +1,8 @@
+import { useContext } from 'react';
+import { LanguageContext } from '../contexts/LanguageContext';
+
 export const About = () => {
+  const { language } = useContext(LanguageContext);
   return (
     <div>
       <h2 className='font-bold text-xl mb-4 dark:text-white'>MindSpace</h2>
@@ -7,8 +11,10 @@ export const About = () => {
         src='/public/logo.jpg'
         alt=''
       />
-      <p className="dark:text-white">
-        is a free, easy-to-use, and secure app for managing personal data notes.
+      <p className='dark:text-white'>
+        {language === 'en'
+          ? 'is a free, easy-to-use, and secure app for managing personal data notes.'
+          : 'adalah aplikasi gratis, mudah digunakan, dan aman untuk mengelola catatan data pribadi.'}
       </p>
     </div>
   );
