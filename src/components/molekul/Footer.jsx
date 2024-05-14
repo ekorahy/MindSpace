@@ -8,22 +8,22 @@ export const Footer = () => {
           <div>
             <ul>
               <li className='sm:my-2'>
-                <Link className='font-light text-white hover:font-bold' to='/'>
+                <Link className='font-light text-white dark:text-black hover:font-bold' to='/'>
                   Home
                 </Link>
               </li>
               <li className='sm:my-2'>
-                <Link className='font-light text-white hover:font-bold' to='/'>
+                <Link className='font-light text-white dark:text-black hover:font-bold' to='/'>
                   About
                 </Link>
               </li>
               <li className='sm:my-2'>
-                <Link className='font-light text-white hover:font-bold' to='/'>
+                <Link className='font-light text-white dark:text-black hover:font-bold' to='/'>
                   Articles
                 </Link>
               </li>
               <li className='sm:my-2'>
-                <Link className='font-light text-white hover:font-bold' to='/'>
+                <Link className='font-light text-white dark:text-black hover:font-bold' to='/'>
                   FAQ
                 </Link>
               </li>
@@ -31,16 +31,16 @@ export const Footer = () => {
           </div>
           <div>
             <img
-              className='mx-auto w-14 border rounded'
+              className='mx-auto w-14 border rounded dark:border-black'
               src='/public/logo.jpg'
               alt=''
             />
-            <h2 className='font-bold text- text-white'>MindSpace</h2>
+            <h2 className='font-bold text- text-white dark:text-black'>MindSpace</h2>
           </div>
         </div>
       </div>
-      <div className='bg-white'>
-        <p className='font-light p-2 text-center'>&copy;2024 - MindSpace</p>
+      <div className='bg-white dark:bg-black'>
+        <p className='font-light p-2 text-center dark:text-white'>&copy;2024 - MindSpace</p>
       </div>
     </footer>
   );

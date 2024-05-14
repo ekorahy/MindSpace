@@ -1,6 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Add } from './pages/Add';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getUserLogged, putAccessToken } from './data/remote/remote';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
@@ -13,10 +13,26 @@ import { Footer } from './components/molekul/Footer';
 import { About } from './pages/About';
 import { Articles } from './pages/Articles';
 import { Article } from './pages/Article';
+import { ThemeContext } from './contexts/ThemeContext';
 
 export const App = () => {
+  const navigate = useNavigate();
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   const [authedUser, setAuthedUser] = useState(null);
   const [initializing, setInitializing] = useState(true);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    setTheme(newTheme);
+  };
+
+  const themeContextValue = useMemo(() => {
+    return {
+      theme,
+      toggleTheme,
+    };
+  }, [theme]);
 
   useEffect(() => {
     getUserLogged().then(({ data }) => {
@@ -25,9 +41,14 @@ export const App = () => {
     });
   }, []);
 
+  useEffect(() => {
+    document.documentElement.setAttribute('class', theme);
+  }, [theme]);
+
   function onLogoutHandler() {
     setAuthedUser(null);
     putAccessToken('');
+    navigate('/');
   }
 
   async function onLoginSucces({ accessToken }) {
@@ -44,52 +65,56 @@ export const App = () => {
   if (authedUser === null) {
     return (
       <>
-        <header className='w-full fixed z-20 top-0 p-4 bg-slate-400/3 backdrop-blur-md sm:px-8 md:px-16'>
-          <Navigation logout={onLogoutHandler} authedUser={authedUser} />
-        </header>
+        <ThemeContext.Provider value={themeContextValue}>
+          <header className='w-full fixed z-20 top-0 p-4 bg-slate-400/3 backdrop-blur-md sm:px-8 md:px-16'>
+            <Navigation logout={onLogoutHandler} authedUser={authedUser} />
+          </header>
 
-        <main className='p-4 mt-20 sm:px-8 md:px-16 md:mt-32'>
-          <div className='max-w-screen-xl mx-auto'>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route
-                path='/login'
-                element={<Login loginSuccess={onLoginSucces} />}
-              />
-              <Route path='/register' element={<Register />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/articles' element={<Articles />} />
-              <Route path='/article/detail/:id' element={<Article />} />
-            </Routes>
-          </div>
-        </main>
+          <main className='p-4 mt-20 sm:px-8 md:px-16 md:mt-32'>
+            <div className='max-w-screen-xl mx-auto'>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route
+                  path='/login'
+                  element={<Login loginSuccess={onLoginSucces} />}
+                />
+                <Route path='/register' element={<Register />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/articles' element={<Articles />} />
+                <Route path='/article/detail/:id' element={<Article />} />
+              </Routes>
+            </div>
+          </main>
 
-        <Footer />
+          <Footer />
+        </ThemeContext.Provider>
       </>
     );
   } else {
     return (
       <>
-        <header className='w-full fixed z-20 top-0 p-4 bg-slate-400/3 backdrop-blur-md sm:px-8 md:px-16'>
-          <Navigation logout={onLogoutHandler} authedUser={authedUser} />
-        </header>
+        <ThemeContext.Provider value={themeContextValue}>
+          <header className='w-full fixed z-20 top-0 p-4 bg-slate-400/3 backdrop-blur-md sm:px-8 md:px-16'>
+            <Navigation logout={onLogoutHandler} authedUser={authedUser} />
+          </header>
 
-        <main className='p-4 mt-20 sm:px-8 md:px-16 md:mt-32'>
-          <div className='max-w-screen-xl mx-auto'>
-            <Routes>
-              <Route path='/' element={<Main name={authedUser.name} />} />
-              <Route path='/detail/:id' element={<Detail />} />
-              <Route path='/add' element={<Add />} />
-              <Route path='/archived' element={<Archived />} />
-            </Routes>
-          </div>
-        </main>
+          <main className='p-4 mt-20 sm:px-8 md:px-16 md:mt-32'>
+            <div className='max-w-screen-xl mx-auto'>
+              <Routes>
+                <Route path='/' element={<Main name={authedUser.name} />} />
+                <Route path='/detail/:id' element={<Detail />} />
+                <Route path='/add' element={<Add />} />
+                <Route path='/archived' element={<Archived />} />
+              </Routes>
+            </div>
+          </main>
 
-        <footer className='bg-violet-400'>
-          <p className='font-light p-2 text-white text-center'>
-            &copy;2024 - MindSpace
-          </p>
-        </footer>
+          <footer className='bg-violet-400'>
+            <p className='font-light p-2 text-white dark:text-black text-center'>
+              &copy;2024 - MindSpace
+            </p>
+          </footer>
+        </ThemeContext.Provider>
       </>
     );
   }

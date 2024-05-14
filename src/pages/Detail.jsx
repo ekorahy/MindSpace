@@ -47,7 +47,7 @@ export const Detail = () => {
     return <p>Loading...</p>;
   }
   return (
-    <div className='mt-16'>
+    <div className='mt-16 dark:text-white'>
       <h3 className='font-bold text-3xl'>{title}</h3>
       <p className='font-light text-lg'>{showFormattedDate(createdAt)}</p>
       <p className='text-lg'>{parse(`${body}`)}</p>

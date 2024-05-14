@@ -13,8 +13,8 @@ export const FAQ = () => {
   return (
     <section className='my-10 scroll-mt-20' id='FAQ'>
       <div className='text-center'>
-        <h2 className='font-bold text-xl'>FAQ</h2>
-        <p className='font-light'>(Frequently Asked Questions)</p>
+        <h2 className='font-bold text-xl dark:text-white'>FAQ</h2>
+        <p className='font-light dark:text-white'>(Frequently Asked Questions)</p>
       </div>
       <div className='mx-auto mt-2 grid max-w-screen-lg divide-y divide-slate-200'>
         {faq.map((faqItem) => (

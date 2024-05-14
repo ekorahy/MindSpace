@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 export const Welcome = ({ name }) => {
   return (
-    <div className='mb-4'>
+    <div className='mb-4 dark:text-white'>
       <h2 className='font-bold'>
         Welcome back <span className='text-violet-400'>{name}</span>
       </h2>

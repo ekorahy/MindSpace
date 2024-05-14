@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export const SearchBar = ({ keyword, keywordChange }) => {
   return (
     <input
-      className='w-full border p-3 rounded-md mb-4'
+      className='w-full border p-3 rounded-md mb-4 dark:bg-black dark:text-white'
       type='text'
       placeholder='Search by title'
       value={keyword}

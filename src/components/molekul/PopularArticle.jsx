@@ -7,7 +7,7 @@ export const PopularArticle = ({ articles }) => {
   return (
     <div className='my-10 xl:my-20'>
       <div className='flex items-center justify-between'>
-        <h2 className='font-bold text-lg xl:text-2xl'>Most popular Article</h2>
+        <h2 className='font-bold text-lg dark:text-white xl:text-2xl'>Most popular Article</h2>
         <Link
           className='flex items-center gap-1 font-light text-violet-400 hover:text-violet-500 hover:border-b hover:border-violet-500'
           to='/articles'

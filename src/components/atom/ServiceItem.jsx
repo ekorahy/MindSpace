@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export const ServiceItem = ({ title, icon }) => {
   return (
-    <div className='bg-white rounded p-4'>
+    <div className='bg-white dark:bg-black rounded p-4'>
       <div className='animate-pulse w-max mx-auto text-6xl text-violet-400'>
         {icon}
       </div>

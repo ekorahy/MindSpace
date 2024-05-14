@@ -8,8 +8,8 @@ export const TestiItem = ({ name, image, body }) => {
         src={image}
         alt=''
       />
-      <h3 className='font-semibold text-lg sm:text-xl sm:mt-2'>{name}</h3>
-      <p className='sm:text-lg'>
+      <h3 className='font-semibold text-lg dark:text-white sm:text-xl sm:mt-2'>{name}</h3>
+      <p className='dark:text-white sm:text-lg'>
         <q>{body}</q>
       </p>
     </div>

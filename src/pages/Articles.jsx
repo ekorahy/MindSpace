@@ -11,7 +11,7 @@ export const Articles = () => {
 
   return (
     <div>
-      <h2 className='font-bold text-xl'>Latest Articles</h2>
+      <h2 className='font-bold text-xl dark:text-white'>Latest Articles</h2>
       <ArticleList articles={articles} />
     </div>
   );

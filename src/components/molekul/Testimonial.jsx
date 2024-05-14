@@ -13,7 +13,7 @@ export const Testimonial = () => {
 
   return (
     <div>
-      <h2 className='font-bold text-xl text-center'>What did they say?</h2>
+      <h2 className='font-bold text-xl text-center dark:text-white'>What did they say?</h2>
       <Swiper
         pagination={{ dynamicBullets: true }}
         modules={[Pagination]}

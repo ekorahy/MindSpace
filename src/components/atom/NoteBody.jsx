@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 export const NoteBody = ({ id, title, createdAt, body }) => {
   return (
-    <div className='mb-16'>
+    <div className='mb-16 dark:text-white'>
       <h3 className='font-semibold hover:text-violet-400'>
         <Link to={`/detail/${id}`}>{title}</Link>
       </h3>

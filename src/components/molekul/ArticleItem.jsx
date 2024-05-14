@@ -18,23 +18,23 @@ export const ArticleItem = ({
       <img className='bg-red-100 w-full rounded mb-2' src={image} alt='' />
       <div className=''>
         <Link
-          className='font-semibold text-lg hover:text-violet-400 xl:text-4xl'
+          className='font-semibold text-lg dark:text-white hover:text-violet-400 xl:text-4xl'
           to={`/article/detail/${id}`}
         >
           {title}
         </Link>
-        <h4 className='font-light mb-2 xl:text-lg xl:mt-2'>Author: {author}</h4>
+        <h4 className='font-light dark:text-white mb-2 xl:text-lg xl:mt-2'>Author: {author}</h4>
         <div className='flex items-center gap-4 mb-2 xl:text-xl'>
-          <p className='flex items-center gap-1'>
+          <p className='flex items-center gap-1 dark:text-white'>
             <IoIosTimer className='inline text-violet-400 text-2xl' />{' '}
             {readingTime}
           </p>
-          <p className='flex items-center gap-1'>
+          <p className='flex items-center gap-1 dark:text-white'>
             <SlCalender className='inline text-violet-400 text-lg' />{' '}
             {createdAt}
           </p>
         </div>
-        <p className='line-clamp-3 mb-2 xl:text-xl'>{parse(`${body}`)}</p>
+        <p className='line-clamp-3 mb-2 dark:text-white xl:text-xl'>{parse(`${body}`)}</p>
         <Link
           className='text-violet-400 hover:text-violet-500 xl:text-xl'
           to={`/article/detail/${id}`}

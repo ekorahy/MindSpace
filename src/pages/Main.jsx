@@ -70,7 +70,7 @@ export const Main = ({ name }) => {
       <Welcome name={name} />
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <section className='mb-4'>
-        <h2 className='font-bold text-lg'>Active Notes</h2>
+        <h2 className='font-bold text-lg dark:text-white'>Active Notes</h2>
         {filteredNotes.length === 0 ? (
           <p className='text-center text-rose-400'>Empty Data</p>
         ) : (

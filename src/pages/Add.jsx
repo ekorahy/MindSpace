@@ -18,7 +18,7 @@ export const Add = () => {
 
   return (
     <div>
-      <h2 className='font-bold text-lg mb-4'>Add note</h2>
+      <h2 className='font-bold text-lg mb-4 dark:text-white'>Add note</h2>
       <NoteInput addNote={onAddNoteHandler} loading={loading} />
     </div>
   );

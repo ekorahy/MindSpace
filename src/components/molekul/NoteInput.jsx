@@ -11,13 +11,13 @@ export const NoteInput = ({ addNote, loading }) => {
   }
 
   return (
-    <form className='w-full' onSubmit={onSubmitHandler}>
+    <form className='w-full dark:text-white' onSubmit={onSubmitHandler}>
       <div className='mb-4'>
         <label className='block mb-1' htmlFor='title'>
           Title
         </label>
         <input
-          className='w-full border p-3 rounded-md'
+          className='w-full border p-3 rounded-md dark:bg-black'
           id='title'
           type='text'
           placeholder='Title'
@@ -38,7 +38,7 @@ export const NoteInput = ({ addNote, loading }) => {
         />
       </div>
       <button
-        className='w-full p-3 bg-violet-400 rounded-md text-white hover:bg-violet-600'
+        className='w-full p-3 bg-violet-400 rounded-md text-white dark:text-black hover:bg-violet-600'
         type='submit'
       >
         {`${loading ? 'Loading...' : 'Add'}`}

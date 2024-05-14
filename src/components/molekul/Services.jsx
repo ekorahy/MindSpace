@@ -7,7 +7,7 @@ export const Services = () => {
   return (
     <div className='my-10'>
       <div className='bg-violet-400 rounded p-4'>
-        <h2 className='font-bold text-lg text-white text-center xl:text-xl'>
+        <h2 className='font-bold text-lg text-white dark:text-black text-center xl:text-xl'>
           Why choose us?
         </h2>
         <div className='max-w-screen-lg mx-auto grid grid-cols-1 gap-2 mt-4 sm:grid-cols-3'>

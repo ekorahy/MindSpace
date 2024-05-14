@@ -67,7 +67,7 @@ export const Archived = () => {
     <div>
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <section className='mb-4'>
-        <h2 className='font-bold text-lg'>Archived Notes</h2>
+        <h2 className='font-bold text-lg dark:text-white'>Archived Notes</h2>
         {filteredNotes.length === 0 ? (
           <p className='text-center text-rose-400'>Empty data</p>
         ) : (
