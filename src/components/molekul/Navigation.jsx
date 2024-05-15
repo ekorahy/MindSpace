@@ -29,7 +29,7 @@ export const Navigation = ({ logout, authedUser }) => {
         <Link className="flex items-center gap-1" to="/">
           <img
             className="h-10 rounded sm:h-8"
-            src="/public/logo.jpg"
+            src="/logo.jpg"
             alt="logo image"
           />{" "}
           <span className="hidden text-xl font-bold text-violet-400 sm:block">
