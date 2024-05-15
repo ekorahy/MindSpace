@@ -13,15 +13,15 @@ export const Services = () => {
         <div className="mx-auto mt-4 grid max-w-screen-lg grid-cols-1 gap-2 sm:grid-cols-3">
           <ServiceItem
             title="Easy to use"
-            icon="/public/services/service-easy.png"
+            icon="/services/service-easy.png"
           />
           <ServiceItem
             title="100% free"
-            icon="/public/services/service-free.png"
+            icon="/services/service-free.png"
           />
           <ServiceItem
             title="Trusted and secure"
-            icon="/public/services/service-safe.png"
+            icon="/services/service-safe.png"
           />
         </div>
       </div>
