@@ -1,11 +1,11 @@
-import { useContext } from 'react';
-import { useInput } from '../../custom_hooks/useInput';
-import PropTypes from 'prop-types';
-import { LanguageContext } from '../../contexts/LanguageContext';
+import { useContext } from "react";
+import { useInput } from "../../custom_hooks/useInput";
+import PropTypes from "prop-types";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 export const NoteInput = ({ addNote, loading }) => {
-  const [title, onTitleChangeHandler] = useInput('');
-  const [body, onBodyChangeHandler] = useInput('', true);
+  const [title, onTitleChangeHandler] = useInput("");
+  const [body, onBodyChangeHandler] = useInput("", true);
   const { language } = useContext(LanguageContext);
 
   function onSubmitHandler(event) {
@@ -14,43 +14,43 @@ export const NoteInput = ({ addNote, loading }) => {
   }
 
   return (
-    <form className='w-full dark:text-white' onSubmit={onSubmitHandler}>
-      <div className='mb-4'>
-        <label className='block mb-1' htmlFor='title'>
-          {language === 'en' ? 'Title' : 'Judul'}
+    <form className="w-full dark:text-white" onSubmit={onSubmitHandler}>
+      <div className="mb-4">
+        <label className="mb-1 block" htmlFor="title">
+          {language === "en" ? "Title" : "Judul"}
         </label>
         <input
-          className='w-full border p-3 rounded-md dark:bg-black'
-          id='title'
-          type='text'
+          className="w-full rounded-md border p-3 dark:bg-black"
+          id="title"
+          type="text"
           value={title}
           onChange={onTitleChangeHandler}
         />
       </div>
-      <div className='mb-4'>
-        <label className='mb-1' htmlFor='body'>
-          {language === 'en' ? 'Body' : 'Isi'}
+      <div className="mb-4">
+        <label className="mb-1" htmlFor="body">
+          {language === "en" ? "Body" : "Isi"}
         </label>
         <div
-          className='w-full h-40 border p-3 rounded-md'
-          id='body'
-          data-placeholder='Body'
+          className="h-40 w-full rounded-md border p-3"
+          id="body"
+          data-placeholder="Body"
           contentEditable
           onInput={onBodyChangeHandler}
         />
       </div>
       <button
-        className='w-full p-3 bg-violet-400 rounded-md text-white dark:text-black hover:bg-violet-600'
-        type='submit'
+        className="w-full rounded-md bg-violet-400 p-3 text-white hover:bg-violet-600 dark:text-black"
+        type="submit"
       >
         {`${
           loading
-            ? language === 'en'
-              ? 'Loading...'
-              : 'Memuat...'
-            : language === 'en'
-            ? 'Add'
-            : 'Tambah'
+            ? language === "en"
+              ? "Loading..."
+              : "Memuat..."
+            : language === "en"
+              ? "Add"
+              : "Tambah"
         }`}
       </button>
     </form>

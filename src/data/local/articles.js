@@ -1,11 +1,11 @@
 let articles = [
   {
-    id: 'article-1',
-    image: '/public/articles/article-1.jpg',
-    title: 'Capturing Ideas: Unlocking the Door to Creativity',
-    author: 'ekorahy',
-    readingTime: '6 Min',
-    createdAt: 'May 12, 2024',
+    id: "article-1",
+    image: "/public/articles/article-1.jpg",
+    title: "Capturing Ideas: Unlocking the Door to Creativity",
+    author: "ekorahy",
+    readingTime: "6 Min",
+    createdAt: "May 12, 2024",
     isPopular: true,
     body: `<p className='mb-2'>In every aspect of life, ideas serve as the cornerstone of innovation and development. From scientific discoveries to artistic creations, ideas mark the starting point of every creative journey. However, often, brilliant ideas come to mind only to fade away amidst the hustle and bustle of daily life. This is why it's crucial to capture these ideas.</p>
 

@@ -1,5 +1,5 @@
-import { MdArchive, MdUnarchive, MdDelete } from 'react-icons/md';
-import PropTypes from 'prop-types';
+import { MdArchive, MdUnarchive, MdDelete } from "react-icons/md";
+import PropTypes from "prop-types";
 
 export const NoteAction = ({
   id,
@@ -9,24 +9,24 @@ export const NoteAction = ({
   onUnarchive,
 }) => {
   return (
-    <div className='absolute bottom-4 right-4 flex gap-2'>
+    <div className="absolute bottom-4 right-4 flex gap-2">
       {archived ? (
         <button
-          className='bg-yellow-400 text-white p-3 rounded-md hover:bg-yellow-600'
+          className="rounded-md bg-yellow-400 p-3 text-white hover:bg-yellow-600"
           onClick={() => onUnarchive(id)}
         >
           <MdUnarchive />
         </button>
       ) : (
         <button
-          className='bg-slate-400 text-white p-3 rounded-md hover:bg-slate-600'
+          className="rounded-md bg-slate-400 p-3 text-white hover:bg-slate-600"
           onClick={() => onArchive(id)}
         >
           <MdArchive />
         </button>
       )}
       <button
-        className='bg-rose-400 text-white p-3 rounded-md hover:bg-rose-600'
+        className="rounded-md bg-rose-400 p-3 text-white hover:bg-rose-600"
         onClick={() => onDelete(id)}
       >
         <MdDelete />

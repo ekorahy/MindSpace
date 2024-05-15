@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-export const useInput = (defaultValue = '', isRichFormat = false) => {
+export const useInput = (defaultValue = "", isRichFormat = false) => {
   const [value, setValue] = useState(defaultValue);
 
   function onValueChangeHandler(event) {

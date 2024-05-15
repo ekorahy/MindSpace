@@ -1,9 +1,9 @@
-import { NoteItem } from './NoteItem';
-import PropTypes from 'prop-types';
+import { NoteItem } from "./NoteItem";
+import PropTypes from "prop-types";
 
 export const NoteList = ({ notes, onDelete, onArchive, onUnarchive }) => {
   return (
-    <div className='z-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
+    <div className="z-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
       {notes.map((note) => (
         <NoteItem
           key={note.id}

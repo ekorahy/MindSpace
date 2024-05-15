@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getArticle } from '../data/local/articles';
-import parse from 'html-react-parser';
-import { IoIosTimer } from 'react-icons/io';
-import { SlCalender } from 'react-icons/sl';
-import { LanguageContext } from '../contexts/LanguageContext';
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getArticle } from "../data/local/articles";
+import parse from "html-react-parser";
+import { IoIosTimer } from "react-icons/io";
+import { SlCalender } from "react-icons/sl";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 export const Article = () => {
   const { id } = useParams();
@@ -19,23 +19,23 @@ export const Article = () => {
 
   return (
     <div>
-      <h2 className='font-bold mb-4 dark:text-white sm:text-lg md:text-xl'>
+      <h2 className="mb-4 text-lg font-bold dark:text-white xl:text-2xl">
         {title}
       </h2>
-      <img className='w-full rounded mb-2' src={image} alt='' />
-      <p className='font-light mb-2 dark:text-white'>
-        {language === 'en' ? 'Author' : 'Penulis'}: {author}
+      <img className="mb-2 w-full rounded" src={image} alt="" />
+      <p className="mb-1 text-sm font-light dark:text-white xl:text-lg">
+        {language === "en" ? "Author" : "Penulis"}: {author}
       </p>
-      <div className='flex items-center gap-4 mb-4'>
-        <p className='flex items-center gap-1 dark:text-white'>
-          <IoIosTimer className='inline text-violet-400 text-2xl' />{' '}
+      <div className="mb-4 flex items-center gap-4 xl:text-xl">
+        <p className="flex items-center gap-1 dark:text-white">
+          <IoIosTimer className="inline text-2xl text-violet-400" />{" "}
           {readingTime}
         </p>
-        <p className='flex items-center gap-1 dark:text-white'>
-          <SlCalender className='inline text-violet-400 text-lg' /> {createdAt}
+        <p className="flex items-center gap-1 dark:text-white">
+          <SlCalender className="inline text-lg text-violet-400" /> {createdAt}
         </p>
       </div>
-      <div className='dark:text-white'>{parse(`${body}`)}</div>
+      <div className="dark:text-white xl:text-xl">{parse(`${body}`)}</div>
     </div>
   );
 };

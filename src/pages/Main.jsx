@@ -1,23 +1,23 @@
-import { useContext, useEffect, useState } from 'react';
-import { NoteList } from '../components/molekul/NoteList';
-import { SearchBar } from '../components/atom/SearchBar';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from "react";
+import { NoteList } from "../components/molekul/NoteList";
+import { SearchBar } from "../components/atom/SearchBar";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   archiveNote,
   deleteNote,
   getActiveNotes,
   unarchiveNote,
-} from '../data/remote/remote';
-import { Welcome } from '../components/molekul/Welcome';
-import PropTypes from 'prop-types';
-import { LanguageContext } from '../contexts/LanguageContext';
+} from "../data/remote/remote";
+import { Welcome } from "../components/molekul/Welcome";
+import PropTypes from "prop-types";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 export const Main = ({ name }) => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeNotes, setActiveNotes] = useState([]);
   const [keyword, setKeyword] = useState(() => {
-    return searchParams.get('keyword') || '';
+    return searchParams.get("keyword") || "";
   });
   const [loading, setLoading] = useState(true);
   const { language } = useContext(LanguageContext);
@@ -42,7 +42,7 @@ export const Main = ({ name }) => {
     const { error } = await archiveNote(id);
 
     if (!error) {
-      navigate('/archived');
+      navigate("/archived");
     }
   }
 
@@ -50,7 +50,7 @@ export const Main = ({ name }) => {
     const { error } = await unarchiveNote(id);
 
     if (!error) {
-      navigate('/');
+      navigate("/");
     }
   }
 
@@ -64,20 +64,20 @@ export const Main = ({ name }) => {
   });
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="dark:text-white">Loading...</p>;
   }
 
   return (
     <div>
       <Welcome name={name} />
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
-      <section className='mb-4'>
-        <h2 className='font-bold text-lg dark:text-white'>
-          {language === 'en' ? 'Active Notes' : 'Catatan Aktif'}
+      <section className="mb-4">
+        <h2 className="mb-2 text-lg font-bold dark:text-white xl:text-2xl">
+          {language === "en" ? "Active Notes" : "Catatan Aktif"}
         </h2>
         {filteredNotes.length === 0 ? (
-          <p className='text-center text-rose-400'>
-            {language === 'en' ? 'Empty Data' : 'Data Kosong'}
+          <p className="text-center text-rose-400 xl:text-xl">
+            {language === "en" ? "Empty Data" : "Data Kosong"}
           </p>
         ) : (
           <NoteList

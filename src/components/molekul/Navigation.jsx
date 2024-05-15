@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
-import { RiMenu3Fill, RiLogoutBoxRLine } from 'react-icons/ri';
-import { useContext, useState } from 'react';
-import { VscAccount } from 'react-icons/vsc';
-import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md';
-import PropTypes from 'prop-types';
-import { HashLink } from 'react-router-hash-link';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { LanguageContext } from '../../contexts/LanguageContext';
-import { CiLight } from 'react-icons/ci';
-import { CiDark } from 'react-icons/ci';
+import { Link } from "react-router-dom";
+import { RiMenu3Fill, RiLogoutBoxRLine } from "react-icons/ri";
+import { useContext, useState } from "react";
+import { VscAccount } from "react-icons/vsc";
+import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from "react-icons/md";
+import PropTypes from "prop-types";
+import { HashLink } from "react-router-hash-link";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import { CiLight } from "react-icons/ci";
+import { CiDark } from "react-icons/ci";
 
 export const Navigation = ({ logout, authedUser }) => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -24,124 +24,123 @@ export const Navigation = ({ logout, authedUser }) => {
   }
 
   return (
-    <nav className='relative max-w-screen-xl mx-auto'>
-      <div className='max-w-screen-xl mx-auto flex justify-between'>
-        <Link className='flex items-center gap-1' to='/'>
+    <nav className="relative mx-auto max-w-screen-xl">
+      <div className="mx-auto flex max-w-screen-xl justify-between">
+        <Link className="flex items-center gap-1" to="/">
           <img
-            className='h-10 rounded sm:h-8'
-            src='/public/logo.jpg'
-            alt='logo image'
-          />{' '}
-          <span className='font-bold text-xl hidden text-violet-400 sm:block'>
+            className="h-10 rounded sm:h-8"
+            src="/public/logo.jpg"
+            alt="logo image"
+          />{" "}
+          <span className="hidden text-xl font-bold text-violet-400 sm:block">
             MindSpace
           </span>
         </Link>
         <button
-          className='text-xl px-3 sm:hidden dark:text-white'
+          className="px-3 text-xl dark:text-white lg:hidden"
           onClick={onMenuHandler}
         >
           <RiMenu3Fill />
         </button>
         {authedUser !== null ? (
           <>
-            <div className='hidden sm:block'>
-              <div className='flex items-center gap-4 dark:text-white'>
-                <Link className='p-2 hover:text-violet-400' to={'/'}>
-                  {language === 'en' ? 'Home' : 'Beranda'}
+            <div className="hidden lg:block">
+              <div className="flex items-center gap-4 dark:text-white">
+                <Link className="p-2 hover:text-violet-400" to={"/"}>
+                  {language === "en" ? "Home" : "Beranda"}
                 </Link>
-                <Link className='p-2 hover:text-violet-400' to={'/archived'}>
-                  {language === 'en' ? 'Archived' : 'Diarsipkan'}
+                <Link className="p-2 hover:text-violet-400" to={"/archived"}>
+                  {language === "en" ? "Archived" : "Diarsipkan"}
                 </Link>
-                <Link className='p-2 hover:text-violet-400' to={'/add'}>
-                  {language === 'en' ? 'Add' : 'Tambah'}
+                <Link className="p-2 hover:text-violet-400" to={"/add"}>
+                  {language === "en" ? "Add" : "Tambah"}
                 </Link>
               </div>
             </div>
             <button
               onClick={() => onProfileHandler()}
-              className='hidden sm:flex items-center font-bold dark:text-white'
+              className="hidden items-center font-bold dark:text-white lg:flex"
             >
-              <VscAccount className='inline text-2xl' />
+              <VscAccount className="inline text-2xl" />
               {!openProfile ? (
-                <MdOutlineArrowDropDown className='text-2xl' />
+                <MdOutlineArrowDropDown className="text-2xl" />
               ) : (
-                <MdOutlineArrowDropUp className='text-2xl' />
+                <MdOutlineArrowDropUp className="text-2xl" />
               )}
             </button>
           </>
         ) : (
           <>
-            <div className='hidden sm:block'>
-              <div className='flex items-center gap-4'>
+            <div className="hidden lg:block">
+              <div className="flex items-center gap-4">
                 <Link
-                  className='p-2 dark:text-white hover:text-violet-400'
-                  to={'/'}
+                  className="p-2 hover:text-violet-400 dark:text-white dark:hover:text-violet-400"
+                  to={"/"}
                 >
-                  {language === 'en' ? 'Home' : 'Beranda'}
+                  {language === "en" ? "Home" : "Beranda"}
                 </Link>
                 <Link
-                  className='p-2 dark:text-white hover:text-violet-400'
-                  to={'/about'}
+                  className="p-2 hover:text-violet-400 dark:text-white dark:hover:text-violet-400"
+                  to={"/about"}
                 >
-                  {language === 'en' ? 'About' : 'Tentang'}
+                  {language === "en" ? "About" : "Tentang"}
                 </Link>
                 <Link
-                  className='p-2 dark:text-white hover:text-violet-400'
-                  to={'/articles'}
+                  className="p-2 hover:text-violet-400 dark:text-white dark:hover:text-violet-400"
+                  to={"/articles"}
                 >
-                  {language === 'en' ? 'Articles' : 'Artikel'}
+                  {language === "en" ? "Articles" : "Artikel"}
                 </Link>
                 <HashLink
                   smooth
-                  className='p-2 dark:text-white hover:text-violet-400'
-                  to={'/#FAQ'}
+                  className="p-2 hover:text-violet-400 dark:text-white dark:hover:text-violet-400"
+                  to={"/#FAQ"}
                 >
-                  {language === 'en' ? 'FAQ' : 'FAQ'}
+                  {language === "en" ? "FAQ" : "FAQ"}
                 </HashLink>
               </div>
             </div>
-            <div className='hidden sm:flex items-center gap-4'>
-              <div className='flex items-center gap-2'>
+            <div className="hidden items-center gap-4 lg:flex">
+              <div className="flex items-center gap-2">
                 <Link
-                  className='py-1 px-4 bg-violet-400 border border-violet-400 text-white dark:text-black hover:bg-violet-500 hover:border-violet-500'
-                  to={'/login'}
+                  className="border border-violet-400 bg-violet-400 px-4 py-1 text-white hover:border-violet-500 hover:bg-violet-500 hover:text-black dark:text-black dark:hover:text-white"
+                  to={"/login"}
                 >
-                  {language === 'en' ? 'Login' : 'Masuk'}
+                  {language === "en" ? "Login" : "Masuk"}
                 </Link>
                 <Link
-                  className='py-1 px-4 border dark:text-white dark:hover:text-black border-violet-400 hover:bg-violet-500 hover:border-violet-500 hover:text-white'
-                  to={'/register'}
+                  className="border border-violet-400 px-4 py-1 hover:border-violet-500 hover:bg-violet-500 hover:text-white dark:text-white dark:hover:text-black"
+                  to={"/register"}
                 >
-                  {language === 'en' ? 'Register' : 'Daftar'}
+                  {language === "en" ? "Register" : "Daftar"}
                 </Link>
               </div>
-              <div className='flex gap-2'>
-                <button className='border p-2' onClick={toggleTheme}>
-                  {theme === 'light' ? (
-                    <CiLight />
-                  ) : (
-                    <CiDark className='dark:text-white' />
-                  )}
+              <div className="flex gap-2">
+                <button
+                  className="border p-2 hover:border-violet-500 hover:bg-violet-500 hover:text-white dark:text-white dark:hover:text-black"
+                  onClick={toggleTheme}
+                >
+                  {theme === "light" ? <CiLight /> : <CiDark />}
                 </button>
                 <button
-                  className='flex items-center text-sm gap-1 border p-2 dark:text-white'
+                  className="flex items-center gap-1 border p-2 text-sm hover:bg-violet-500 hover:text-white dark:text-white dark:hover:text-black"
                   onClick={toggleLanguage}
                 >
-                  {language === 'en' ? (
+                  {language === "en" ? (
                     <>
                       <img
-                        className='w-4'
-                        src='/public/flags/en-flag.png'
-                        alt=''
+                        className="w-4"
+                        src="/public/flags/en-flag.png"
+                        alt=""
                       />
                       EN
                     </>
                   ) : (
                     <>
                       <img
-                        className='w-4'
-                        src='/public/flags/id-flag.png'
-                        alt=''
+                        className="w-4"
+                        src="/public/flags/id-flag.png"
+                        alt=""
                       />
                       ID
                     </>
@@ -154,63 +153,66 @@ export const Navigation = ({ logout, authedUser }) => {
       </div>
       <div
         className={`${
-          !openMenu && 'hidden'
-        } fixed top-16 right-4 w-full flex justify-end`}
+          !openMenu && "hidden"
+        } fixed right-4 top-16 flex w-full justify-end`}
       >
         {authedUser !== null ? (
-          <div className='h-max z-50 w-40 p-4 bg-slate-50 dark:bg-slate-950 rounded-md'>
-            <div className='w-full mx-auto text-center pb-4 border-b dark:text-white'>
-              <div className='w-max text-4xl mx-auto'>
+          <div className="z-50 h-max w-40 rounded-md bg-slate-50 p-4 dark:bg-slate-950">
+            <div className="mx-auto w-full border-b pb-4 text-center dark:text-white">
+              <div className="mx-auto w-max text-4xl">
                 <VscAccount />
               </div>
-              <h2 className='font-bold'>{authedUser.name}</h2>
-              <p className='font-light'>{authedUser.email}</p>
+              <h2 className="font-bold">{authedUser.name}</h2>
+              <p className="font-light">{authedUser.email}</p>
             </div>
-            <ul className='mt-2'>
-              <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/'>{language === 'en' ? 'Home' : 'Beranda'}</Link>
+            <ul className="mt-2">
+              <li className="mb-1 border-b p-2 hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black">
+                <Link to="/">{language === "en" ? "Home" : "Beranda"}</Link>
               </li>
-              <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/archived'>
-                  {language === 'en' ? 'Archived' : 'Diarsipkan'}
+              <li className="mb-1 border-b p-2 hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black">
+                <Link to="/archived">
+                  {language === "en" ? "Archived" : "Diarsipkan"}
                 </Link>
               </li>
-              <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/add'>{language === 'en' ? 'Add' : 'Tambah'}</Link>
+              <li className="mb-1 border-b p-2 hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black">
+                <Link to="/add">{language === "en" ? "Add" : "Tambah"}</Link>
               </li>
-              <li className=' p-2 mt-4 mb-4 text-center bg-rose-400 text-white dark:text-black hover:bg-rose-500'>
+              <li className=" mb-4 mt-4 bg-rose-400 p-2 text-center text-white hover:bg-rose-500 dark:text-black">
                 <button onClick={() => logout()}>
-                  <RiLogoutBoxRLine className='inline' />{' '}
-                  {language === 'en' ? 'Log out' : 'Keluar'}
+                  <RiLogoutBoxRLine className="inline" />{" "}
+                  {language === "en" ? "Log out" : "Keluar"}
                 </button>
               </li>
-              <li className='w-max mx-auto flex gap-2'>
-                <button className='border p-2' onClick={toggleTheme}>
-                  {theme === 'light' ? (
+              <li className="mx-auto flex w-max gap-2">
+                <button
+                  className="border p-2 hover:bg-violet-400 hover:text-white dark:hover:text-black"
+                  onClick={toggleTheme}
+                >
+                  {theme === "light" ? (
                     <CiLight />
                   ) : (
-                    <CiDark className='dark:text-white' />
+                    <CiDark className="dark:text-white" />
                   )}
                 </button>
                 <button
-                  className='flex items-center text-sm gap-1 border p-2 dark:text-white'
+                  className="flex items-center gap-1 border p-2 text-sm hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black"
                   onClick={toggleLanguage}
                 >
-                  {language === 'en' ? (
+                  {language === "en" ? (
                     <>
                       <img
-                        className='w-4'
-                        src='/public/flags/en-flag.png'
-                        alt=''
+                        className="w-4"
+                        src="/public/flags/en-flag.png"
+                        alt=""
                       />
                       EN
                     </>
                   ) : (
                     <>
                       <img
-                        className='w-4'
-                        src='/public/flags/id-flag.png'
-                        alt=''
+                        className="w-4"
+                        src="/public/flags/id-flag.png"
+                        alt=""
                       />
                       ID
                     </>
@@ -220,61 +222,61 @@ export const Navigation = ({ logout, authedUser }) => {
             </ul>
           </div>
         ) : (
-          <div className='h-max z-20 w-40 bg-slate-50 dark:bg-slate-950 rounded-md'>
-            <ul className='p-4'>
-              <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/'>{language === 'en' ? 'Home' : 'Beranda'}</Link>
+          <div className="z-20 h-max w-40 rounded-md bg-slate-50 dark:bg-slate-950">
+            <ul className="p-4">
+              <li className="mb-1 border-b p-2 hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black">
+                <Link to="/">{language === "en" ? "Home" : "Beranda"}</Link>
               </li>
-              <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/about'>
-                  {language === 'en' ? 'About' : 'Tentang'}
+              <li className="mb-1 border-b p-2 hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black">
+                <Link to="/about">
+                  {language === "en" ? "About" : "Tentang"}
                 </Link>
               </li>
-              <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <Link to='/articles'>
-                  {language === 'en' ? 'Articles' : 'Artikel'}
+              <li className="mb-1 border-b p-2 hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black">
+                <Link to="/articles">
+                  {language === "en" ? "Articles" : "Artikel"}
                 </Link>
               </li>
-              <li className='p-2 mb-1 border-b dark:text-white dark:hover:text-black hover:bg-violet-400 hover:text-white'>
-                <HashLink smooth to={'/#FAQ'}>
+              <li className="mb-1 border-b p-2 hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black">
+                <HashLink smooth to={"/#FAQ"}>
                   FAQ
                 </HashLink>
               </li>
-              <li className='p-2 mt-4 mb-1 text-center dark:text-black dark:hover:text-white bg-violet-400 text-white hover:bg-violet-500'>
-                <Link to='/login'>{language === 'en' ? 'Login' : 'Masuk'}</Link>
+              <li className="mb-1 mt-4 bg-violet-400 p-2 text-center text-white hover:bg-violet-500 dark:text-black dark:hover:text-white">
+                <Link to="/login">{language === "en" ? "Login" : "Masuk"}</Link>
               </li>
-              <li className='p-2 text-center border mb-4 dark:text-white dark:hover:text-black border-violet-400 hover:bg-violet-500 hover:border-violet-500 hover:text-white'>
-                <Link to='/register'>
-                  {language === 'en' ? 'Register' : 'Daftar'}
+              <li className="mb-4 border border-violet-400 p-2 text-center hover:border-violet-500 hover:bg-violet-500 hover:text-white dark:text-white dark:hover:text-black">
+                <Link to="/register">
+                  {language === "en" ? "Register" : "Daftar"}
                 </Link>
               </li>
-              <li className='w-max flex gap-2 mx-auto'>
-                <button className='border p-2' onClick={toggleTheme}>
-                  {theme === 'light' ? (
+              <li className="mx-auto flex w-max gap-2">
+                <button className="border p-2" onClick={toggleTheme}>
+                  {theme === "light" ? (
                     <CiLight />
                   ) : (
-                    <CiDark className='dark:text-white' />
+                    <CiDark className="dark:text-white" />
                   )}
                 </button>
                 <button
-                  className='flex items-center text-sm gap-1 border p-2 dark:text-white'
+                  className="flex items-center gap-1 border p-2 text-sm dark:text-white"
                   onClick={toggleLanguage}
                 >
-                  {language === 'en' ? (
+                  {language === "en" ? (
                     <>
                       <img
-                        className='w-4'
-                        src='/public/flags/en-flag.png'
-                        alt=''
+                        className="w-4"
+                        src="/public/flags/en-flag.png"
+                        alt=""
                       />
                       EN
                     </>
                   ) : (
                     <>
                       <img
-                        className='w-4'
-                        src='/public/flags/id-flag.png'
-                        alt=''
+                        className="w-4"
+                        src="/public/flags/id-flag.png"
+                        alt=""
                       />
                       ID
                     </>
@@ -285,50 +287,49 @@ export const Navigation = ({ logout, authedUser }) => {
           </div>
         )}
       </div>
-      <div className={`${!openProfile && 'hidden'} absolute right-0`}>
+      <div className={`${!openProfile && "hidden"} absolute right-0`}>
         {authedUser !== null && (
-          <div className='h-max z-50 w-60 p-8 bg-slate-50 dark:bg-slate-950 rounded-md'>
-            <div className='w-full mx-auto text-center pb-4 border-b dark:text-white'>
-              <div className='w-max text-6xl mx-auto mb-2'>
+          <div className="z-50 h-max w-60 rounded-md bg-slate-50 p-8 dark:bg-slate-950">
+            <div className="mx-auto w-full border-b pb-4 text-center dark:text-white">
+              <div className="mx-auto mb-2 w-max text-6xl">
                 <VscAccount />
               </div>
-              <h2 className='font-bold text-xl'>{authedUser.name}</h2>
-              <p className='font-light'>{authedUser.email}</p>
+              <h2 className="text-xl font-bold">{authedUser.name}</h2>
+              <p className="font-light">{authedUser.email}</p>
             </div>
             <button
-              className='w-full p-2 mt-4 mb-4 text-center bg-rose-400 text-white dark:text-black hover:bg-rose-500'
+              className="mb-4 mt-4 w-full bg-rose-400 p-2 text-center text-white hover:bg-rose-500 dark:text-black"
               onClick={() => logout()}
             >
-              <RiLogoutBoxRLine className='inline' />{' '}
-              {language === 'en' ? 'Log out' : 'Keluar'}
+              <RiLogoutBoxRLine className="inline" />{" "}
+              {language === "en" ? "Log out" : "Keluar"}
             </button>
-            <div className='w-max flex gap-2 mx-auto'>
-              <button className='border p-2' onClick={toggleTheme}>
-                {theme === 'light' ? (
-                  <CiLight />
-                ) : (
-                  <CiDark className='dark:text-white' />
-                )}
+            <div className="mx-auto flex w-max gap-2">
+              <button
+                className="border p-2 hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black"
+                onClick={toggleTheme}
+              >
+                {theme === "light" ? <CiLight /> : <CiDark />}
               </button>
               <button
-                className='flex items-center text-sm gap-1 border p-2 dark:text-white'
+                className="flex items-center gap-1 border p-2 text-sm hover:bg-violet-400 hover:text-white dark:text-white dark:hover:text-black"
                 onClick={toggleLanguage}
               >
-                {language === 'en' ? (
+                {language === "en" ? (
                   <>
                     <img
-                      className='w-4'
-                      src='/public/flags/en-flag.png'
-                      alt=''
+                      className="w-4"
+                      src="/public/flags/en-flag.png"
+                      alt=""
                     />
                     EN
                   </>
                 ) : (
                   <>
                     <img
-                      className='w-4'
-                      src='/public/flags/id-flag.png'
-                      alt=''
+                      className="w-4"
+                      src="/public/flags/id-flag.png"
+                      alt=""
                     />
                     ID
                   </>

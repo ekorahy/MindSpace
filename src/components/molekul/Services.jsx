@@ -1,22 +1,28 @@
-import { ServiceItem } from '../atom/ServiceItem';
-import { PiHandTap } from 'react-icons/pi';
-import { MdMoneyOff } from 'react-icons/md';
-import { AiOutlineSafety } from 'react-icons/ai';
-import { useContext } from 'react';
-import { LanguageContext } from '../../contexts/LanguageContext';
+import { ServiceItem } from "../atom/ServiceItem";
+import { useContext } from "react";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 export const Services = () => {
   const { language } = useContext(LanguageContext);
   return (
-    <div className='my-10'>
-      <div className='bg-violet-400 rounded p-4'>
-        <h2 className='font-bold text-lg text-white dark:text-black text-center xl:text-xl'>
-          {language === 'en' ? 'Why choose us' : 'Mengapa memilih kami'}?
+    <div className="my-10">
+      <div className="rounded bg-slate-100 p-4 dark:bg-slate-950">
+        <h2 className="text-center text-lg font-bold dark:text-white xl:text-2xl">
+          {language === "en" ? "Why choose us" : "Mengapa memilih kami"}?
         </h2>
-        <div className='max-w-screen-lg mx-auto grid grid-cols-1 gap-2 mt-4 sm:grid-cols-3'>
-          <ServiceItem title='Easy to use' icon={<PiHandTap />} />
-          <ServiceItem title='100% free' icon={<MdMoneyOff />} />
-          <ServiceItem title='Trusted and secure' icon={<AiOutlineSafety />} />
+        <div className="mx-auto mt-4 grid max-w-screen-lg grid-cols-1 gap-2 sm:grid-cols-3">
+          <ServiceItem
+            title="Easy to use"
+            icon="/public/services/service-easy.png"
+          />
+          <ServiceItem
+            title="100% free"
+            icon="/public/services/service-free.png"
+          />
+          <ServiceItem
+            title="Trusted and secure"
+            icon="/public/services/service-safe.png"
+          />
         </div>
       </div>
     </div>

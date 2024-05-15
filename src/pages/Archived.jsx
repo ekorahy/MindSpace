@@ -1,21 +1,21 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from "react";
 import {
   archiveNote,
   deleteNote,
   getArchivedNotes,
   unarchiveNote,
-} from '../data/remote/remote';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { SearchBar } from '../components/atom/SearchBar';
-import { NoteList } from '../components/molekul/NoteList';
-import { LanguageContext } from '../contexts/LanguageContext';
+} from "../data/remote/remote";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { SearchBar } from "../components/atom/SearchBar";
+import { NoteList } from "../components/molekul/NoteList";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 export const Archived = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [archivedNotes, setArchivedNotes] = useState([]);
   const [keyword, setKeyword] = useState(() => {
-    return searchParams.get('keyword') || '';
+    return searchParams.get("keyword") || "";
   });
   const [loading, setLoading] = useState(true);
   const { language } = useContext(LanguageContext);
@@ -40,7 +40,7 @@ export const Archived = () => {
     const { error } = await archiveNote(id);
 
     if (!error) {
-      navigate('/archived');
+      navigate("/archived");
     }
   }
 
@@ -48,7 +48,7 @@ export const Archived = () => {
     const { error } = await unarchiveNote(id);
 
     if (!error) {
-      navigate('/');
+      navigate("/");
     }
   }
 
@@ -62,19 +62,19 @@ export const Archived = () => {
   });
 
   if (loading) {
-    return <p>Loading ...</p>;
+    return <p className="dark:text-white">Loading ...</p>;
   }
 
   return (
     <div>
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
-      <section className='mb-4'>
-        <h2 className='font-bold text-lg dark:text-white'>
-          {language === 'en' ? 'Archived Notes' : 'Catatan Diarsipkan'}
+      <section className="mb-4">
+        <h2 className="mb-2 text-lg font-bold dark:text-white xl:text-2xl">
+          {language === "en" ? "Archived Notes" : "Catatan Diarsipkan"}
         </h2>
         {filteredNotes.length === 0 ? (
-          <p className='text-center text-rose-400'>
-            {language === 'en' ? 'Empty Data' : 'Data Kosong'}
+          <p className="text-center text-rose-400 xl:text-xl">
+            {language === "en" ? "Empty Data" : "Data Kosong"}
           </p>
         ) : (
           <NoteList

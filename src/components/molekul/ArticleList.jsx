@@ -1,5 +1,5 @@
-import { ArticleItem } from './ArticleItem';
-import PropTypes from 'prop-types';
+import { ArticleItem } from "./ArticleItem";
+import PropTypes from "prop-types";
 
 export const ArticleList = ({ articles }) => {
   return (

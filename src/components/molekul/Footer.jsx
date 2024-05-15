@@ -1,43 +1,43 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { LanguageContext } from '../../contexts/LanguageContext';
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 export const Footer = () => {
   const { language } = useContext(LanguageContext);
   return (
-    <footer className='bg-violet-400'>
-      <div className='p-4 sm:px-8 md:px-16'>
-        <div className='max-w-screen-xl h-max mx-auto flex justify-between'>
+    <footer className="bg-violet-900">
+      <div className="p-4 sm:px-8 md:px-16">
+        <div className="mx-auto flex h-max max-w-screen-xl justify-between">
           <div>
             <ul>
-              <li className='sm:my-2'>
+              <li className="mb-1">
                 <Link
-                  className='font-light text-white dark:text-black hover:font-bold'
-                  to='/'
+                  className="font-light hover:font-bold dark:text-white xl:text-xl"
+                  to="/"
                 >
-                  {language === 'en' ? 'Home' : 'Beranda'}
+                  {language === "en" ? "Home" : "Beranda"}
                 </Link>
               </li>
-              <li className='sm:my-2'>
+              <li className="mb-1">
                 <Link
-                  className='font-light text-white dark:text-black hover:font-bold'
-                  to='/about'
+                  className="font-light hover:font-bold dark:text-white xl:text-xl"
+                  to="/about"
                 >
-                  {language === 'en' ? 'About' : 'Tentang'}
+                  {language === "en" ? "About" : "Tentang"}
                 </Link>
               </li>
-              <li className='sm:my-2'>
+              <li className="mb-1">
                 <Link
-                  className='font-light text-white dark:text-black hover:font-bold'
-                  to='/articles'
+                  className="font-light hover:font-bold dark:text-white xl:text-xl"
+                  to="/articles"
                 >
-                  {language === 'en' ? 'Articles' : 'Artikel'}
+                  {language === "en" ? "Articles" : "Artikel"}
                 </Link>
               </li>
-              <li className='sm:my-2'>
+              <li className="mb-1">
                 <Link
-                  className='font-light text-white dark:text-black hover:font-bold'
-                  to='/#FAQ'
+                  className="font-light hover:font-bold dark:text-white xl:text-xl"
+                  to="/#FAQ"
                 >
                   FAQ
                 </Link>
@@ -46,18 +46,18 @@ export const Footer = () => {
           </div>
           <div>
             <img
-              className='mx-auto w-14 border rounded dark:border-black'
-              src='/public/logo.jpg'
-              alt=''
+              className="mx-auto mb-1 w-14 rounded dark:border-black"
+              src="/public/logo.jpg"
+              alt=""
             />
-            <h2 className='font-bold text- text-white dark:text-black'>
+            <h2 className="text- font-bold dark:text-white xl:text-xl">
               MindSpace
             </h2>
           </div>
         </div>
       </div>
-      <div className='bg-white dark:bg-black'>
-        <p className='font-light p-2 text-center dark:text-white'>
+      <div className="bg-white dark:bg-black">
+        <p className="p-2 text-center text-sm font-light dark:text-white xl:text-lg">
           &copy;2024 - MindSpace
         </p>
       </div>

@@ -1,6 +1,6 @@
-import { NoteBody } from '../atom/NoteBody';
-import { NoteAction } from '../atom/NoteAction';
-import PropTypes from 'prop-types';
+import { NoteBody } from "../atom/NoteBody";
+import { NoteAction } from "../atom/NoteAction";
+import PropTypes from "prop-types";
 
 export const NoteItem = ({
   id,
@@ -13,7 +13,7 @@ export const NoteItem = ({
   onUnarchive,
 }) => {
   return (
-    <section className='relative border p-4 rounded-md'>
+    <section className="relative rounded-md border p-4">
       <NoteBody id={id} title={title} createdAt={createdAt} body={body} />
       <NoteAction
         id={id}
