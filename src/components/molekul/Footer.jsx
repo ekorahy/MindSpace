@@ -47,7 +47,7 @@ export const Footer = () => {
           <div>
             <img
               className="mx-auto mb-1 w-14 rounded dark:border-black"
-              src="/public/logo.jpg"
+              src="/logo.jpg"
               alt=""
             />
             <h2 className="text- font-bold dark:text-white xl:text-xl">

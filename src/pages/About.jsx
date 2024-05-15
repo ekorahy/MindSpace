@@ -10,7 +10,7 @@ export const About = () => {
       </h2>
       <img
         className="mx-auto mb-2 w-full rounded sm:w-60 xl:mb-4"
-        src="/public/logo.jpg"
+        src="/logo.jpg"
         alt=""
       />
       <p className="dark:text-white xl:text-xl">

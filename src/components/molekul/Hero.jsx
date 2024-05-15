@@ -7,7 +7,7 @@ export const Hero = () => {
   return (
     <div className="my-8 flex-row-reverse items-center sm:flex">
       <div className="basis-1/2">
-        <img src="/public/hero.png" alt="" />
+        <img src="/hero.png" alt="" />
       </div>
       <div className="mt-4 basis-1/2">
         <p className="font-light dark:text-white md:text-lg">

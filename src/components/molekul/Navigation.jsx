@@ -130,7 +130,7 @@ export const Navigation = ({ logout, authedUser }) => {
                     <>
                       <img
                         className="w-4"
-                        src="/public/flags/en-flag.png"
+                        src="/flags/en-flag.png"
                         alt=""
                       />
                       EN
@@ -139,7 +139,7 @@ export const Navigation = ({ logout, authedUser }) => {
                     <>
                       <img
                         className="w-4"
-                        src="/public/flags/id-flag.png"
+                        src="/flags/id-flag.png"
                         alt=""
                       />
                       ID
@@ -202,7 +202,7 @@ export const Navigation = ({ logout, authedUser }) => {
                     <>
                       <img
                         className="w-4"
-                        src="/public/flags/en-flag.png"
+                        src="/flags/en-flag.png"
                         alt=""
                       />
                       EN
@@ -211,7 +211,7 @@ export const Navigation = ({ logout, authedUser }) => {
                     <>
                       <img
                         className="w-4"
-                        src="/public/flags/id-flag.png"
+                        src="/flags/id-flag.png"
                         alt=""
                       />
                       ID
@@ -266,7 +266,7 @@ export const Navigation = ({ logout, authedUser }) => {
                     <>
                       <img
                         className="w-4"
-                        src="/public/flags/en-flag.png"
+                        src="/flags/en-flag.png"
                         alt=""
                       />
                       EN
@@ -275,7 +275,7 @@ export const Navigation = ({ logout, authedUser }) => {
                     <>
                       <img
                         className="w-4"
-                        src="/public/flags/id-flag.png"
+                        src="/flags/id-flag.png"
                         alt=""
                       />
                       ID
@@ -319,7 +319,7 @@ export const Navigation = ({ logout, authedUser }) => {
                   <>
                     <img
                       className="w-4"
-                      src="/public/flags/en-flag.png"
+                      src="/flags/en-flag.png"
                       alt=""
                     />
                     EN
@@ -328,7 +328,7 @@ export const Navigation = ({ logout, authedUser }) => {
                   <>
                     <img
                       className="w-4"
-                      src="/public/flags/id-flag.png"
+                      src="/flags/id-flag.png"
                       alt=""
                     />
                     ID
