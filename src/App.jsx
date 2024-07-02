@@ -78,9 +78,8 @@ export const App = () => {
       <>
         <ThemeContext.Provider value={themeContextValue}>
           <LanguageContext.Provider value={languageContextValue}>
-
-            <main className="mt-16 p-4 sm:px-8 md:mt-32 md:px-16">
-              <div className="mx-auto max-w-screen-xl">
+            <main className="flex min-h-screen items-center p-8">
+              <div className="mx-auto w-full sm:w-3/4 lg:max-w-6xl">
                 <Routes>
                   <Route
                     path="/*"
@@ -99,7 +98,6 @@ export const App = () => {
       <>
         <ThemeContext.Provider value={themeContextValue}>
           <LanguageContext.Provider value={languageContextValue}>
-
             <main className="mt-20 p-4 sm:px-8 md:mt-32 md:px-16 xl:min-h-screen">
               <div className="mx-auto max-w-screen-xl">
                 <Routes>
