@@ -13,8 +13,8 @@ export const Add = () => {
   }
 
   return (
-    <div>
-      <h2 className="mb-4 text-lg font-bold xl:text-2xl">Add Note</h2>
+    <div className="mt-20 w-full lg:w-3/4">
+      <h2 className="mb-4 font-lato text-lg font-bold">Add New Note</h2>
       <NoteInput addNote={onAddNoteHandler} />
     </div>
   );
