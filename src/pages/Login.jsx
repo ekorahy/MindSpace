@@ -27,7 +27,7 @@ export const Login = ({ loginSuccess }) => {
           <Logo />
         </div>
         <div className="mb-4">
-          <h2 className="text-2xl font-black font-lato">Login Form</h2>
+          <h2 className="font-lato text-2xl font-black">Login Form</h2>
           <p>Please enter your email and password to log in.</p>
         </div>
         <LoginInput login={onLogin} />

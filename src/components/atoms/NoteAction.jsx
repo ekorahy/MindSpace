@@ -12,21 +12,21 @@ export const NoteAction = ({
     <div className="absolute bottom-4 right-4 flex gap-2">
       {archived ? (
         <button
-          className="rounded-md bg-yellow-400 p-3 text-white hover:bg-yellow-600"
+          className="rounded-md bg-yellow-400 p-3 text-white hover:bg-yellow-500"
           onClick={() => onUnarchive(id)}
         >
           <MdUnarchive />
         </button>
       ) : (
         <button
-          className="rounded-md bg-slate-400 p-3 text-white hover:bg-slate-600"
+          className="rounded-md bg-slate-400 p-3 text-white hover:bg-slate-500"
           onClick={() => onArchive(id)}
         >
           <MdArchive />
         </button>
       )}
       <button
-        className="rounded-md bg-rose-400 p-3 text-white hover:bg-rose-600"
+        className="rounded-md bg-red-400 p-3 text-white hover:bg-red-500"
         onClick={() => onDelete(id)}
       >
         <MdDelete />

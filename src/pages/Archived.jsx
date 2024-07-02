@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   archiveNote,
   deleteNote,
@@ -8,7 +8,6 @@ import {
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { SearchBar } from "../components/atoms/SearchBar";
 import { NoteList } from "../components/molecules/NoteList";
-import { LanguageContext } from "../contexts/LanguageContext";
 
 export const Archived = () => {
   const navigate = useNavigate();
@@ -17,13 +16,10 @@ export const Archived = () => {
   const [keyword, setKeyword] = useState(() => {
     return searchParams.get("keyword") || "";
   });
-  const [loading, setLoading] = useState(true);
-  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     getArchivedNotes().then(({ data }) => {
       setArchivedNotes(data);
-      setLoading(false);
     });
   }, []);
 
@@ -61,21 +57,13 @@ export const Archived = () => {
     return note.title.toLowerCase().includes(keyword.toLowerCase());
   });
 
-  if (loading) {
-    return <p className="dark:text-white">Loading ...</p>;
-  }
-
   return (
     <div>
       <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <section className="mb-4">
-        <h2 className="mb-2 text-lg font-bold dark:text-white xl:text-2xl">
-          {language === "en" ? "Archived Notes" : "Catatan Diarsipkan"}
-        </h2>
+        <h2 className="mb-2 text-lg font-bold">Archived Notes</h2>
         {filteredNotes.length === 0 ? (
-          <p className="text-center text-rose-400 xl:text-xl">
-            {language === "en" ? "Empty Data" : "Data Kosong"}
-          </p>
+          <p className="text-center text-red-400">Empty Data</p>
         ) : (
           <NoteList
             notes={filteredNotes}

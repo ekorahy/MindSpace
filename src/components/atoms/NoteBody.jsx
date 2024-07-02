@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 
 export const NoteBody = ({ id, title, createdAt, body }) => {
   return (
-    <div className="mb-16 dark:text-white">
-      <h3 className="font-semibold hover:text-violet-400">
+    <div className="mb-16">
+      <h3 className="mb-1 font-bold underline hover:text-emerald-400">
         <Link to={`/detail/${id}`}>{title}</Link>
       </h3>
-      <p className="font-light">{showFormattedDate(createdAt)}</p>
+      <p className="mb-2 font-light">{showFormattedDate(createdAt)}</p>
       <div className="line-clamp-3">{parse(`${body}`)}</div>
     </div>
   );

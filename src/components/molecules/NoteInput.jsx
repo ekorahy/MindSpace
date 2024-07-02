@@ -1,12 +1,9 @@
-import { useContext } from "react";
 import { useInput } from "../../custom_hooks/useInput";
 import PropTypes from "prop-types";
-import { LanguageContext } from "../../contexts/LanguageContext";
 
-export const NoteInput = ({ addNote, loading }) => {
+export const NoteInput = ({ addNote }) => {
   const [title, onTitleChangeHandler] = useInput("");
   const [body, onBodyChangeHandler] = useInput("", true);
-  const { language } = useContext(LanguageContext);
 
   function onSubmitHandler(event) {
     event.preventDefault();
@@ -14,13 +11,13 @@ export const NoteInput = ({ addNote, loading }) => {
   }
 
   return (
-    <form className="w-full dark:text-white" onSubmit={onSubmitHandler}>
+    <form className="w-full" onSubmit={onSubmitHandler}>
       <div className="mb-4">
         <label className="mb-1 block" htmlFor="title">
-          {language === "en" ? "Title" : "Judul"}
+          Title
         </label>
         <input
-          className="w-full rounded-md border p-3 dark:bg-black"
+          className="w-full rounded-md border p-3"
           id="title"
           type="text"
           value={title}
@@ -29,7 +26,7 @@ export const NoteInput = ({ addNote, loading }) => {
       </div>
       <div className="mb-4">
         <label className="mb-1" htmlFor="body">
-          {language === "en" ? "Body" : "Isi"}
+          Body
         </label>
         <div
           className="h-40 w-full rounded-md border p-3"
@@ -40,18 +37,10 @@ export const NoteInput = ({ addNote, loading }) => {
         />
       </div>
       <button
-        className="w-full rounded-md bg-violet-400 p-3 text-white hover:bg-violet-600 dark:text-black"
+        className="w-full rounded-md bg-violet-400 p-3 text-white hover:bg-violet-600"
         type="submit"
       >
-        {`${
-          loading
-            ? language === "en"
-              ? "Loading..."
-              : "Memuat..."
-            : language === "en"
-              ? "Add"
-              : "Tambah"
-        }`}
+        Add
       </button>
     </form>
   );
