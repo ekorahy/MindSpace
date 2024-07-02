@@ -1,19 +1,20 @@
 import PropTypes from "prop-types";
-import { useContext } from "react";
-import { LanguageContext } from "../../contexts/LanguageContext";
+import Lottie from "lottie-react";
+import Robot from "../../assets/animation/Robot.json";
 
 export const Welcome = ({ name }) => {
-  const { language } = useContext(LanguageContext);
   return (
-    <div className="mb-4 dark:text-white">
-      <h2 className="text-xl font-bold xl:text-3xl">
-        {language === "en" ? "Welcome back" : "Selamat datang kembali "}{" "}
-        <span className="text-violet-400">{name}</span>
-      </h2>
-      <p className="text-lg font-light xl:text-2xl">
-        {language === "en" ? "Have a great day" : "Semoga harimu menyenangkan"}
-        🎉
-      </p>
+    <div className="mb-8 flex items-center justify-between rounded-md bg-gradient-to-r from-white to-emerald-100">
+      <div>
+        <h2 className="mb-2 font-lato text-xl font-bold sm:text-3xl lg:text-5xl">
+          Welcome back{" "}
+          <span className="font-bold text-emerald-400">{name}</span>
+        </h2>
+        <p className="sm:text-xl lg:text-3xl">Have a nice day🎉</p>
+      </div>
+      <div className="w-40 sm:w-60">
+        <Lottie animationData={Robot} loop={true} />
+      </div>
     </div>
   );
 };

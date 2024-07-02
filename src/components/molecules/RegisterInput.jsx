@@ -81,7 +81,7 @@ export const RegisterInput = ({ signUp }) => {
           id="confirmPassword"
           {...register("confirmPassword", {
             required: true,
-            validate: (value) => value === password || "Passwords do not match"
+            validate: (value) => value === password || "Passwords do not match",
           })}
           aria-invalid={errors.confirmPassword ? "true" : "false"}
         />

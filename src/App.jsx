@@ -1,49 +1,19 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Add } from "./pages/Add";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { getUserLogged, putAccessToken } from "./data/remote/remote";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import { Main } from "./pages/Main";
+import { Home } from "./pages/Home";
 import { Archived } from "./pages/Archived";
 import { Detail } from "./pages/Detail";
-import { ThemeContext } from "./contexts/ThemeContext";
-import { LanguageContext } from "./contexts/LanguageContext";
+import Navigation from "./components/molecules/Navigation";
+import NavSide from "./components/molecules/NavSide";
 
 export const App = () => {
   const navigate = useNavigate();
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const [language, setLanguage] = useState(
-    localStorage.getItem("language") || "en",
-  );
   const [authedUser, setAuthedUser] = useState(null);
   const [initializing, setInitializing] = useState(true);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    localStorage.setItem("theme", newTheme);
-    setTheme(newTheme);
-  };
-
-  const toggleLanguage = () => {
-    const newLanguage = language === "en" ? "id" : "en";
-    localStorage.setItem("language", newLanguage);
-    setLanguage(newLanguage);
-  };
-
-  const themeContextValue = useMemo(() => {
-    return {
-      theme,
-      toggleTheme,
-    };
-  }, [theme]);
-
-  const languageContextValue = useMemo(() => {
-    return {
-      language,
-      toggleLanguage,
-    };
-  }, [language]);
 
   useEffect(() => {
     getUserLogged().then(({ data }) => {
@@ -52,11 +22,7 @@ export const App = () => {
     });
   }, []);
 
-  useEffect(() => {
-    document.documentElement.setAttribute("class", theme);
-  }, [theme]);
-
-  function onLogoutHandler() {
+  function onLogout() {
     setAuthedUser(null);
     putAccessToken("");
     navigate("/");
@@ -76,40 +42,40 @@ export const App = () => {
   if (authedUser === null) {
     return (
       <>
-        <ThemeContext.Provider value={themeContextValue}>
-          <LanguageContext.Provider value={languageContextValue}>
-            <main className="flex min-h-screen items-center p-8">
-              <div className="mx-auto w-full sm:w-3/4 lg:max-w-6xl">
-                <Routes>
-                  <Route
-                    path="/*"
-                    element={<Login loginSuccess={onLoginSucces} />}
-                  />
-                  <Route path="/register" element={<Register />} />
-                </Routes>
-              </div>
-            </main>
-          </LanguageContext.Provider>
-        </ThemeContext.Provider>
+        <main className="flex min-h-screen items-center p-8">
+          <div className="mx-auto w-full sm:w-3/4 lg:max-w-6xl">
+            <Routes>
+              <Route
+                path="/*"
+                element={<Login loginSuccess={onLoginSucces} />}
+              />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </div>
+        </main>
       </>
     );
   } else {
     return (
       <>
-        <ThemeContext.Provider value={themeContextValue}>
-          <LanguageContext.Provider value={languageContextValue}>
-            <main className="mt-20 p-4 sm:px-8 md:mt-32 md:px-16 xl:min-h-screen">
-              <div className="mx-auto max-w-screen-xl">
-                <Routes>
-                  <Route path="/" element={<Main name={authedUser.name} />} />
-                  <Route path="/detail/:id" element={<Detail />} />
-                  <Route path="/add" element={<Add />} />
-                  <Route path="/archived" element={<Archived />} />
-                </Routes>
-              </div>
-            </main>
-          </LanguageContext.Provider>
-        </ThemeContext.Provider>
+        <header className="w-full lg:hidden">
+          <Navigation user={authedUser} logout={onLogout} />
+        </header>
+        <main className="mx-auto max-w-6xl p-4 sm:px-8">
+          <div className="flex gap-8">
+            <aside className="hidden lg:block">
+              <NavSide user={authedUser} logout={onLogout} />
+            </aside>
+            <div className="w-full">
+              <Routes>
+                <Route path="/" element={<Home name={authedUser.name} />} />
+                <Route path="/detail/:id" element={<Detail />} />
+                <Route path="/add" element={<Add />} />
+                <Route path="/archived" element={<Archived />} />
+              </Routes>
+            </div>
+          </div>
+        </main>
       </>
     );
   }
