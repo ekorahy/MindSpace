@@ -1,43 +1,55 @@
-import { useInput } from "../../custom_hooks/useInput";
 import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
 
 export const NoteInput = ({ addNote }) => {
-  const [title, onTitleChangeHandler] = useInput("");
-  const [body, onBodyChangeHandler] = useInput("", true);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
-  function onSubmitHandler(event) {
-    event.preventDefault();
+  function onSubmitHandler({ title, body }) {
     addNote(title, body);
   }
 
   return (
-    <form className="w-full" onSubmit={onSubmitHandler}>
-      <div className="mb-4">
-        <label className="mb-1 block" htmlFor="title">
+    <form className="grid grid-cols-1" onSubmit={handleSubmit(onSubmitHandler)}>
+      <div className="mb-2">
+        <label className="font-lg mb-1 block font-bold" htmlFor="title">
           Title
         </label>
         <input
-          className="w-full rounded-md border p-3"
+          className="mb-1 w-full rounded-md border p-2 outline-none"
           id="title"
           type="text"
-          value={title}
-          onChange={onTitleChangeHandler}
+          {...register("title", { required: true })}
+          aria-invalid={errors.title ? "true" : "false"}
         />
+        {errors.title?.type === "required" && (
+          <p role="alert" className="text-red-500">
+            *Title is required
+          </p>
+        )}
       </div>
       <div className="mb-4">
-        <label className="mb-1" htmlFor="body">
+        <label className="font-lg mb-1 block font-bold" htmlFor="body">
           Body
         </label>
-        <div
-          className="h-40 w-full rounded-md border p-3"
+        <textarea
+          className="mb-1 min-h-40 w-full rounded-md border p-2 outline-none"
           id="body"
-          data-placeholder="Body"
-          contentEditable
-          onInput={onBodyChangeHandler}
-        />
+          type="text"
+          {...register("body", { required: true })}
+          aria-invalid={errors.body ? "true" : "false"}
+        ></textarea>
+        {errors.body?.type === "required" && (
+          <p role="alert" className="text-red-500">
+            *Body is required
+          </p>
+        )}
       </div>
       <button
-        className="w-full rounded-md bg-violet-400 p-3 text-white hover:bg-violet-600"
+        className="font-lg rounded-md bg-emerald-400 p-2 font-bold text-white hover:bg-emerald-500"
         type="submit"
       >
         Add
@@ -48,5 +60,4 @@ export const NoteInput = ({ addNote }) => {
 
 NoteInput.propTypes = {
   addNote: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
 };

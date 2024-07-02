@@ -42,7 +42,7 @@ export const Detail = () => {
   const { title, createdAt, body, archived } = note;
 
   return (
-    <div className="mt-16">
+    <div className="mt-20">
       <h3 className="text-3xl font-bold">{title}</h3>
       <p className="text-lg font-light">{showFormattedDate(createdAt)}</p>
       <p className="text-lg">{parse(`${body}`)}</p>
