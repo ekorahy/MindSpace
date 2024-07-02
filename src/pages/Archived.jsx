@@ -6,8 +6,8 @@ import {
   unarchiveNote,
 } from "../data/remote/remote";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { SearchBar } from "../components/atom/SearchBar";
-import { NoteList } from "../components/molekul/NoteList";
+import { SearchBar } from "../components/atoms/SearchBar";
+import { NoteList } from "../components/molecules/NoteList";
 import { LanguageContext } from "../contexts/LanguageContext";
 
 export const Archived = () => {

@@ -1,4 +1,4 @@
-import { ServiceItem } from "../atom/ServiceItem";
+import { ServiceItem } from "../atoms/ServiceItem";
 import { useContext } from "react";
 import { LanguageContext } from "../../contexts/LanguageContext";
 
