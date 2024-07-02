@@ -1,5 +1,5 @@
 import { login } from "../data/remote/remote";
-import { LoginInput } from "../components/molekul/LoginInput";
+import { LoginInput } from "../components/molecules/LoginInput";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useContext, useState } from "react";

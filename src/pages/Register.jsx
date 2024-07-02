@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../data/remote/remote";
-import { RegisterInput } from "../components/molekul/RegisterInput";
+import { RegisterInput } from "../components/molecules/RegisterInput";
 import { useContext, useState } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 

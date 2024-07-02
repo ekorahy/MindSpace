@@ -7,12 +7,6 @@ import { Register } from "./pages/Register";
 import { Main } from "./pages/Main";
 import { Archived } from "./pages/Archived";
 import { Detail } from "./pages/Detail";
-import { Home } from "./pages/Home";
-import { Navigation } from "./components/molekul/Navigation";
-import { Footer } from "./components/molekul/Footer";
-import { About } from "./pages/About";
-import { Articles } from "./pages/Articles";
-import { Article } from "./pages/Article";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { LanguageContext } from "./contexts/LanguageContext";
 
@@ -84,27 +78,18 @@ export const App = () => {
       <>
         <ThemeContext.Provider value={themeContextValue}>
           <LanguageContext.Provider value={languageContextValue}>
-            <header className="bg-slate-400/3 fixed top-0 z-20 w-full p-4 backdrop-blur-md sm:px-8 md:px-16">
-              <Navigation logout={onLogoutHandler} authedUser={authedUser} />
-            </header>
 
             <main className="mt-16 p-4 sm:px-8 md:mt-32 md:px-16">
               <div className="mx-auto max-w-screen-xl">
                 <Routes>
-                  <Route path="/" element={<Home />} />
                   <Route
-                    path="/login"
+                    path="/*"
                     element={<Login loginSuccess={onLoginSucces} />}
                   />
                   <Route path="/register" element={<Register />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/articles" element={<Articles />} />
-                  <Route path="/article/detail/:id" element={<Article />} />
                 </Routes>
               </div>
             </main>
-
-            <Footer />
           </LanguageContext.Provider>
         </ThemeContext.Provider>
       </>
@@ -114,9 +99,6 @@ export const App = () => {
       <>
         <ThemeContext.Provider value={themeContextValue}>
           <LanguageContext.Provider value={languageContextValue}>
-            <header className="bg-slate-400/3 fixed top-0 z-20 w-full p-4 backdrop-blur-md sm:px-8 md:px-16">
-              <Navigation logout={onLogoutHandler} authedUser={authedUser} />
-            </header>
 
             <main className="mt-20 p-4 sm:px-8 md:mt-32 md:px-16 xl:min-h-screen">
               <div className="mx-auto max-w-screen-xl">
@@ -128,12 +110,6 @@ export const App = () => {
                 </Routes>
               </div>
             </main>
-
-            <footer className="bg-violet-400">
-              <p className="p-2 text-center font-light text-white dark:text-black">
-                &copy;2024 - MindSpace
-              </p>
-            </footer>
           </LanguageContext.Provider>
         </ThemeContext.Provider>
       </>

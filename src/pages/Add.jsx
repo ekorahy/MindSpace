@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { NoteInput } from "../components/molekul/NoteInput";
+import { NoteInput } from "../components/molecules/NoteInput";
 import { addNote } from "../data/remote/remote";
 import { useContext, useState } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";

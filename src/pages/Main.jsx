@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { NoteList } from "../components/molekul/NoteList";
-import { SearchBar } from "../components/atom/SearchBar";
+import { NoteList } from "../components/molecules/NoteList";
+import { SearchBar } from "../components/atoms/SearchBar";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   archiveNote,
@@ -8,7 +8,7 @@ import {
   getActiveNotes,
   unarchiveNote,
 } from "../data/remote/remote";
-import { Welcome } from "../components/molekul/Welcome";
+import { Welcome } from "../components/molecules/Welcome";
 import PropTypes from "prop-types";
 import { LanguageContext } from "../contexts/LanguageContext";
 

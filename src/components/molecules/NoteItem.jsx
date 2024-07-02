@@ -1,5 +1,5 @@
-import { NoteBody } from "../atom/NoteBody";
-import { NoteAction } from "../atom/NoteAction";
+import { NoteBody } from "../atoms/NoteBody";
+import { NoteAction } from "../atoms/NoteAction";
 import PropTypes from "prop-types";
 
 export const NoteItem = ({
