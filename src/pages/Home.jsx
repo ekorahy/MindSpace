@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Home = ({ name }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { activeNotes = [] } = useSelector((states) => states);
   const [keyword, setKeyword] = useState(() => {
@@ -56,7 +56,7 @@ export const Home = ({ name }) => {
         <div className="mb-4 flex items-center justify-between">
           <h2 className="mb-2 text-lg font-bold">Active Notes</h2>
           <Link
-            className="flex items-center gap-2 rounded-md bg-emerald-400 p-2 hover:bg-emerald-500"
+            className="flex items-center gap-2 rounded-md bg-emerald-400 p-2 hover:bg-emerald-500 dark:text-zinc-950"
             to="/add"
           >
             <span>

@@ -15,21 +15,21 @@ export const NoteAction = ({
           className="rounded-md bg-yellow-400 p-3 text-white hover:bg-yellow-500"
           onClick={() => onUnarchive(id)}
         >
-          <MdUnarchive />
+          <MdUnarchive className="dark:text-zinc-950" />
         </button>
       ) : (
         <button
           className="rounded-md bg-slate-400 p-3 text-white hover:bg-slate-500"
           onClick={() => onArchive(id)}
         >
-          <MdArchive />
+          <MdArchive className="dark:text-zinc-950" />
         </button>
       )}
       <button
         className="rounded-md bg-red-400 p-3 text-white hover:bg-red-500"
         onClick={() => onDelete(id)}
       >
-        <MdDelete />
+        <MdDelete className="dark:text-zinc-950" />
       </button>
     </div>
   );

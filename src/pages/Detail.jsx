@@ -19,9 +19,9 @@ export const Detail = () => {
   }
 
   return (
-    <div className="mt-20">
-      <h3 className="text-3xl font-bold">{noteDetail.title}</h3>
-      <p className="text-lg font-light">
+    <div className="mt-20 lg:mt-0">
+      <h3 className="mb-2 text-3xl font-bold">{noteDetail.title}</h3>
+      <p className="mb-6 text-lg font-light">
         {showFormattedDate(noteDetail.createdAt)}
       </p>
       <p className="text-lg">{parse(`${noteDetail.body}`)}</p>

@@ -4,7 +4,7 @@ import Robot from "../../assets/animation/Robot.json";
 
 export const Welcome = ({ name }) => {
   return (
-    <div className="mb-8 flex items-center justify-between rounded-md bg-gradient-to-r from-white to-emerald-100">
+    <div className="mb-8 flex items-center justify-between rounded-md bg-gradient-to-r from-white to-emerald-50 dark:from-zinc-950 dark:to-emerald-950">
       <div>
         <h2 className="mb-2 font-lato text-xl font-bold sm:text-3xl lg:text-5xl">
           Welcome back{" "}

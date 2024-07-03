@@ -54,12 +54,12 @@ export const App = () => {
         <header className="w-full lg:hidden">
           <Navigation user={authUser} logout={onLogout} />
         </header>
-        <main className="mx-auto max-w-6xl p-4 sm:px-8">
+        <main className="mx-auto max-w-7xl p-4 sm:px-8">
           <div className="flex gap-8">
-            <aside className="hidden lg:block">
+            <aside className="hidden lg:fixed lg:block">
               <NavSide user={authUser} logout={onLogout} />
             </aside>
-            <div className="w-full">
+            <div className="w-full lg:ml-52">
               <Routes>
                 <Route path="/" element={<Home name={authUser.name} />} />
                 <Route path="/detail/:id" element={<Detail />} />
