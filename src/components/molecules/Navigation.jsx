@@ -25,7 +25,7 @@ export default function Navigation({ user, logout }) {
       <div
         className={`${menuOpen ? "block" : "hidden"} sm:60 absolute right-4 z-20 w-56 rounded-md bg-white px-4 py-8 shadow dark:bg-zinc-900 sm:right-8`}
       >
-        <div className="mb-2 border-b border-dashed pb-2 text-center">
+        <div className="mb-2 border-b border-dashed pb-2 text-center dark:border-zinc-800">
           <img
             className="mx-auto mb-2 w-24"
             src="/default_avatar.png"
@@ -34,10 +34,10 @@ export default function Navigation({ user, logout }) {
           <h2 className="font-bold">{user.name}</h2>
           <p>{user.email}</p>
         </div>
-        <div className="my-2 flex flex-col gap-2 border-b border-dashed pb-2">
+        <div className="my-2 flex flex-col gap-2 border-b border-dashed pb-2 dark:border-zinc-800">
           <NavList />
         </div>
-        <div className="my-2 border-b border-dashed pb-2">
+        <div className="my-2 border-b border-dashed pb-2 dark:border-zinc-800">
           <button
             className="flex items-center gap-2 rounded-md p-2 text-red-400 hover:font-bold hover:text-red-500"
             onClick={logout}

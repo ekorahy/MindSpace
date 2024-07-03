@@ -13,7 +13,7 @@ export const NoteItem = ({
   onUnarchive,
 }) => {
   return (
-    <section className="relative rounded-md border p-4">
+    <section className="relative rounded-md border p-4 dark:border-zinc-800">
       <NoteBody id={id} title={title} createdAt={createdAt} body={body} />
       <NoteAction
         id={id}

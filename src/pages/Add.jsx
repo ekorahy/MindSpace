@@ -12,7 +12,7 @@ export const Add = () => {
   }
 
   return (
-    <div className="mt-20 w-full lg:w-3/4">
+    <div className="mt-20 w-full lg:w-3/4 lg:mt-0">
       <h2 className="mb-4 font-lato text-lg font-bold">Add New Note</h2>
       <NoteInput addNote={onAddNoteHandler} />
     </div>

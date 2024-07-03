@@ -7,7 +7,7 @@ export default function NavSide({ user, logout }) {
   return (
     <nav className="flex h-screen w-40 flex-col justify-between">
       <div>
-        <div className="border-b border-dashed pb-4 text-center">
+        <div className="border-b border-dashed pb-4 text-center dark:border-zinc-800">
           <img
             className="mx-auto mb-2 w-20"
             src="/default_avatar.png"
@@ -16,7 +16,7 @@ export default function NavSide({ user, logout }) {
           <h2 className="text-lg font-bold">{user.name}</h2>
           <p>{user.email}</p>
         </div>
-        <div className="flex flex-col gap-2 border-b border-dashed py-4">
+        <div className="flex flex-col gap-2 border-b border-dashed py-4 dark:border-zinc-800">
           <NavList />
         </div>
         <div className="py-4">
