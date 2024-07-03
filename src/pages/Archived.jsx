@@ -1,51 +1,38 @@
 import { useEffect, useState } from "react";
-import {
-  archiveNote,
-  deleteNote,
-  getArchivedNotes,
-  unarchiveNote,
-} from "../data/remote/remote";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { SearchBar } from "../components/atoms/SearchBar";
 import { NoteList } from "../components/molecules/NoteList";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  asyncDeleteNote,
+  asyncGetArchivedNotes,
+  asyncUnarchiveNote,
+} from "../states/archivedNotes/action";
+import { asyncArchiveNote } from "../states/activeNotes/action";
 
 export const Archived = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [archivedNotes, setArchivedNotes] = useState([]);
+  const { archivedNotes = [] } = useSelector((states) => states);
   const [keyword, setKeyword] = useState(() => {
     return searchParams.get("keyword") || "";
   });
 
   useEffect(() => {
-    getArchivedNotes().then(({ data }) => {
-      setArchivedNotes(data);
-    });
-  }, []);
+    dispatch(asyncGetArchivedNotes());
+  }, [dispatch]);
 
-  async function onDeleteHandler(id) {
-    await deleteNote(id);
-
-    const { error, data } = await getArchivedNotes();
-    if (!error) {
-      setArchivedNotes(data);
-    }
+  async function onDeleteHandler(noteId) {
+    dispatch(asyncDeleteNote(noteId));
   }
 
-  async function onArchiveHandler(id) {
-    const { error } = await archiveNote(id);
-
-    if (!error) {
-      navigate("/archived");
-    }
+  async function onArchiveHandler(noteId) {
+    dispatch(asyncArchiveNote(noteId, navigate));
   }
 
-  async function onUnarchiveHandler(id) {
-    const { error } = await unarchiveNote(id);
-
-    if (!error) {
-      navigate("/");
-    }
+  async function onUnarchiveHandler(noteId) {
+    dispatch(asyncUnarchiveNote(noteId, navigate));
   }
 
   function onKeywordChangeHandler(keyword) {

@@ -1,18 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
-import { register } from "../data/remote/remote";
 import { RegisterInput } from "../components/molecules/RegisterInput";
 import Lottie from "lottie-react";
 import Rocket from "../assets/animation/Rocket.json";
 import Logo from "../components/atoms/Logo";
+import { useDispatch } from "react-redux";
+import asyncRegisterUser from "../states/user/action";
 
 export const Register = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
 
   async function onRegister(name, email, password) {
-    const { error } = await register({ name, email, password });
-    if (!error) {
-      navigate("/login");
-    }
+    dispatch(asyncRegisterUser({ name, email, password }, navigate));
   }
 
   return (

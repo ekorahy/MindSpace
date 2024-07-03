@@ -1,54 +1,42 @@
 import { useEffect, useState } from "react";
 import { NoteList } from "../components/molecules/NoteList";
 import { SearchBar } from "../components/atoms/SearchBar";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import {
-  archiveNote,
-  deleteNote,
-  getActiveNotes,
-  unarchiveNote,
-} from "../data/remote/remote";
+import { Link, useSearchParams } from "react-router-dom";
 import { Welcome } from "../components/molecules/Welcome";
 import PropTypes from "prop-types";
 import { RiAddLargeFill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  asyncArchiveNote,
+  asyncDeleteNote,
+  asyncGetActiveNotes,
+} from "../states/activeNotes/action";
+import { asyncUnarchiveNote } from "../states/archivedNotes/action";
+import { useNavigate } from "react-router-dom";
 
 export const Home = ({ name }) => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams();
-  const [activeNotes, setActiveNotes] = useState([]);
+  const { activeNotes = [] } = useSelector((states) => states);
   const [keyword, setKeyword] = useState(() => {
     return searchParams.get("keyword") || "";
   });
 
   useEffect(() => {
-    getActiveNotes().then(({ data }) => {
-      setActiveNotes(data);
-    });
-  }, []);
+    dispatch(asyncGetActiveNotes());
+  }, [dispatch]);
 
-  async function onDeleteHandler(id) {
-    await deleteNote(id);
-
-    const { error, data } = await getActiveNotes();
-    if (!error) {
-      setActiveNotes(data);
-    }
+  async function onDeleteHandler(noteId) {
+    dispatch(asyncDeleteNote(noteId));
   }
 
-  async function onArchiveHandler(id) {
-    const { error } = await archiveNote(id);
-
-    if (!error) {
-      navigate("/archived");
-    }
+  async function onArchiveHandler(noteId) {
+    dispatch(asyncArchiveNote(noteId, navigate));
   }
 
-  async function onUnarchiveHandler(id) {
-    const { error } = await unarchiveNote(id);
-
-    if (!error) {
-      navigate("/");
-    }
+  async function onUnarchiveHandler(noteId) {
+    dispatch(asyncUnarchiveNote(noteId, navigate));
   }
 
   function onKeywordChangeHandler(keyword) {
