@@ -19,7 +19,7 @@ export const NoteInput = ({ addNote }) => {
           Title
         </label>
         <input
-          className="mb-1 w-full rounded-md border p-2 outline-none dark:bg-zinc-950"
+          className="mb-1 w-full rounded-md border p-2 outline-none dark:border-zinc-800 dark:bg-zinc-950"
           id="title"
           type="text"
           {...register("title", { required: true })}
@@ -36,7 +36,7 @@ export const NoteInput = ({ addNote }) => {
           Body
         </label>
         <textarea
-          className="mb-1 min-h-40 w-full rounded-md border p-2 outline-none dark:bg-zinc-950"
+          className="mb-1 min-h-40 w-full rounded-md border p-2 outline-none dark:border-zinc-800 dark:bg-zinc-950"
           id="body"
           type="text"
           {...register("body", { required: true })}

@@ -21,7 +21,7 @@ export default function ToggleTheme() {
 
   return (
     <button
-      className="rounded-md border p-2 text-lg hover:bg-slate-100 dark:text-white dark:hover:bg-zinc-800"
+      className="rounded-md border p-2 text-lg hover:bg-slate-100 dark:border-zinc-800 dark:text-white dark:hover:bg-zinc-800"
       onClick={toggleTheme}
     >
       {theme === "light" ? <GoSun /> : <GoMoon />}
