@@ -1,24 +1,27 @@
 import Swal from "sweetalert2";
 import remote from "../../data/remote/remote";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 function asyncRegisterUser({ name, email, password }, navigate) {
-  return async () => {
+  return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const message = await remote.register({ name, email, password });
       Swal.fire({
-        icon: 'success',
+        icon: "success",
         title: message,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
-      navigate('/')
+      navigate("/");
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Opps...',
-        text: error.message
-      })
+        icon: "error",
+        title: "Opps...",
+        text: error.message,
+      });
     }
+    dispatch(hideLoading());
   };
 }
 

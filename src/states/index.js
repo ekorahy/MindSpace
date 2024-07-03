@@ -4,6 +4,7 @@ import isPreloadReducer from "./isPreload/reducer";
 import activeNotesReducer from "./activeNotes/reducer";
 import archivedNotesReducer from "./archivedNotes/reducer";
 import noteDetailReducer from "./detailNote/reducer";
+import { loadingBarReducer } from "react-redux-loading-bar";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     activeNotes: activeNotesReducer,
     archivedNotes: archivedNotesReducer,
     noteDetail: noteDetailReducer,
+    loadingBar: loadingBarReducer,
   },
 });
 

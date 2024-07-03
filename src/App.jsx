@@ -11,6 +11,7 @@ import NavSide from "./components/molecules/NavSide";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncPreloadProcess } from "./states/isPreload/action";
 import { asyncUnsetAuthUser } from "./states/authUser/action";
+import Loading from "./components/atoms/Loading";
 
 export const App = () => {
   const navigate = useNavigate();
@@ -35,13 +36,11 @@ export const App = () => {
   if (authUser === null) {
     return (
       <>
+        <Loading />
         <main className="flex min-h-screen items-center p-8">
           <div className="mx-auto w-full sm:w-3/4 lg:max-w-6xl">
             <Routes>
-              <Route
-                path="/*"
-                element={<Login />}
-              />
+              <Route path="/*" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>
           </div>
@@ -51,6 +50,7 @@ export const App = () => {
   } else {
     return (
       <>
+        <Loading />
         <header className="w-full lg:hidden">
           <Navigation user={authUser} logout={onLogout} />
         </header>
