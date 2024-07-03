@@ -5,6 +5,7 @@ import activeNotesReducer from "./activeNotes/reducer";
 import archivedNotesReducer from "./archivedNotes/reducer";
 import noteDetailReducer from "./detailNote/reducer";
 import { loadingBarReducer } from "react-redux-loading-bar";
+import themeReducer from "./darkMode/reducer";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     archivedNotes: archivedNotesReducer,
     noteDetail: noteDetailReducer,
     loadingBar: loadingBarReducer,
+    theme: themeReducer,
   },
 });
 

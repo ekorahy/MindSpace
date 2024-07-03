@@ -22,7 +22,7 @@ export const RegisterInput = ({ signUp }) => {
           Name
         </label>
         <input
-          className="mb-1 w-full rounded-md border p-2 outline-none"
+          className="mb-1 w-full rounded-md border p-2 outline-none dark:bg-zinc-950"
           id="name"
           type="text"
           {...register("name", { required: true })}
@@ -39,7 +39,7 @@ export const RegisterInput = ({ signUp }) => {
           Email
         </label>
         <input
-          className="mb-1 w-full rounded-md border p-2 outline-none"
+          className="mb-1 w-full rounded-md border p-2 outline-none dark:bg-zinc-950"
           id="email"
           type="email"
           {...register("email", { required: true })}
@@ -56,7 +56,7 @@ export const RegisterInput = ({ signUp }) => {
           Password
         </label>
         <input
-          className="mb-1 w-full rounded-md border p-2 outline-none"
+          className="mb-1 w-full rounded-md border p-2 outline-none dark:bg-zinc-950"
           type="password"
           id="password"
           {...register("password", { required: true })}
@@ -76,7 +76,7 @@ export const RegisterInput = ({ signUp }) => {
           Confirm Password
         </label>
         <input
-          className="mb-1 w-full rounded-md border p-2 outline-none"
+          className="mb-1 w-full rounded-md border p-2 outline-none dark:bg-zinc-950"
           type="password"
           id="confirmPassword"
           {...register("confirmPassword", {
@@ -97,7 +97,7 @@ export const RegisterInput = ({ signUp }) => {
         )}
       </div>
       <button
-        className="rounded-md bg-emerald-400 p-2 text-lg font-bold text-white hover:bg-emerald-500"
+        className="rounded-md bg-emerald-400 p-2 text-lg font-bold text-white hover:bg-emerald-500 dark:text-zinc-950"
         type="submit"
       >
         Register
