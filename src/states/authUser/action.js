@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import remote from "../../data/remote/remote";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 const ActionType = {
   SET_AUTH_USER: "SET_AUTH_USER",
@@ -26,6 +27,7 @@ function unsetAuthUserActionCreator() {
 
 function asyncSetAuthUser({ email, password }, navigate) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const { message, accessToken } = await remote.login({ email, password });
       remote.putAccessToken(accessToken);
@@ -45,6 +47,7 @@ function asyncSetAuthUser({ email, password }, navigate) {
         text: error.message,
       });
     }
+    dispatch(hideLoading());
   };
 }
 

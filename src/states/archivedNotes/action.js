@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import remote from "../../data/remote/remote";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 const ActionType = {
   RECEIVE_ARCHIVED_NOTES: "RECEIVE_ARCHIVED_NOTES",
@@ -36,6 +37,7 @@ function deleteNote(noteId) {
 
 function asyncGetArchivedNotes() {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const notes = await remote.getArchivedNotes();
       dispatch(receiveArchivedNotesActionCreator(notes));
@@ -46,11 +48,13 @@ function asyncGetArchivedNotes() {
         text: error.message,
       });
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncUnarchiveNote(noteId, navigate) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const message = await remote.unarchiveNote(noteId);
       dispatch(unarchiveNote(noteId));
@@ -68,11 +72,13 @@ function asyncUnarchiveNote(noteId, navigate) {
         text: error.message,
       });
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncDeleteNote(noteId) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
@@ -101,6 +107,7 @@ function asyncDeleteNote(noteId) {
         text: error.message,
       });
     }
+    dispatch(hideLoading());
   };
 }
 

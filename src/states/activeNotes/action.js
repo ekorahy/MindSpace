@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import remote from "../../data/remote/remote";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 const ActionType = {
   RECEIVE_NOTES: "RECEIVE_NOTES",
@@ -46,6 +47,7 @@ function deleteNote(noteId) {
 
 function asyncGetActiveNotes() {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const notes = await remote.getActiveNotes();
       dispatch(receiveNotesActionCreator(notes));
@@ -56,11 +58,13 @@ function asyncGetActiveNotes() {
         text: error.message,
       });
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncAddNote({ title, body }, navigate) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const { message, data } = await remote.addNote({ title, body });
       dispatch(addNoteActionCreator(data));
@@ -78,11 +82,13 @@ function asyncAddNote({ title, body }, navigate) {
         text: error.message,
       });
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncArchiveNote(noteId, navigate) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const message = await remote.archiveNote(noteId);
       dispatch(archiveNote(noteId));
@@ -100,11 +106,13 @@ function asyncArchiveNote(noteId, navigate) {
         text: error.message,
       });
     }
+    dispatch(hideLoading());
   };
 }
 
 function asyncDeleteNote(noteId) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
@@ -132,6 +140,7 @@ function asyncDeleteNote(noteId) {
         text: error.message,
       });
     }
+    dispatch(hideLoading());
   };
 }
 
