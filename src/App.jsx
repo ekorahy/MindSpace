@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { asyncPreloadProcess } from "./states/isPreload/action";
 import { asyncUnsetAuthUser } from "./states/authUser/action";
 import Loading from "./components/atoms/Loading";
+import Preload from "./components/atoms/Preload";
+import { asyncSetTheme } from "./states/darkMode/action";
 
 export const App = () => {
   const navigate = useNavigate();
@@ -22,6 +24,9 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
+    const savedTheme = localStorage.getItem("theme") || "light";
+    dispatch(asyncSetTheme(savedTheme));
+    document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, [dispatch]);
 
   function onLogout() {
@@ -30,7 +35,7 @@ export const App = () => {
   }
 
   if (isPreload) {
-    return <p>Loading ...</p>;
+    return <Preload />;
   }
 
   if (authUser === null) {

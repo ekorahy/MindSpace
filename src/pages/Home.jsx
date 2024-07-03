@@ -13,6 +13,7 @@ import {
 } from "../states/activeNotes/action";
 import { asyncUnarchiveNote } from "../states/archivedNotes/action";
 import { useNavigate } from "react-router-dom";
+import EmptyData from "../components/atoms/EmptyData";
 
 export const Home = ({ name }) => {
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ export const Home = ({ name }) => {
           </Link>
         </div>
         {filteredNotes.length === 0 ? (
-          <p className="text-center text-red-400">Empty Data</p>
+          <EmptyData />
         ) : (
           <NoteList
             notes={filteredNotes}

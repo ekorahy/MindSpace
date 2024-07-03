@@ -9,6 +9,7 @@ import {
   asyncUnarchiveNote,
 } from "../states/archivedNotes/action";
 import { asyncArchiveNote } from "../states/activeNotes/action";
+import EmptyData from "../components/atoms/EmptyData";
 
 export const Archived = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ export const Archived = () => {
       <section className="mb-4">
         <h2 className="mb-2 text-lg font-bold">Archived Notes</h2>
         {filteredNotes.length === 0 ? (
-          <p className="text-center text-red-400">Empty Data</p>
+          <EmptyData />
         ) : (
           <NoteList
             notes={filteredNotes}
