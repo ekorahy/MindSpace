@@ -1,20 +1,18 @@
-import { login } from "../data/remote/remote";
 import { LoginInput } from "../components/molecules/LoginInput";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Lottie from "lottie-react";
 import Rocket from "../assets/animation/Rocket.json";
 import Logo from "../components/atoms/Logo";
+import { useDispatch } from "react-redux";
+import { asyncSetAuthUser } from "../states/authUser/action";
 
-export const Login = ({ loginSuccess }) => {
+export const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   async function onLogin(email, password) {
-    const { error, data } = await login({ email, password });
-    if (!error) {
-      loginSuccess(data);
-      navigate("/");
-    }
+    dispatch(asyncSetAuthUser({ email, password }, navigate));
   }
 
   return (

@@ -1,4 +1,4 @@
-import { navigation } from "../../data/local/navigation";
+import { navigation } from "../../data/locale/navigation";
 import NavItem from "../atoms/NavItem";
 
 export default function NavList() {
