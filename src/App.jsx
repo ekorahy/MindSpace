@@ -14,6 +14,7 @@ import { asyncUnsetAuthUser } from "./states/authUser/action";
 import Loading from "./components/atoms/Loading";
 import Preload from "./components/atoms/Preload";
 import { asyncSetTheme } from "./states/darkMode/action";
+import NotFound from "./pages/NotFound";
 
 export const App = () => {
   const navigate = useNavigate();
@@ -70,6 +71,7 @@ export const App = () => {
                 <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/add" element={<Add />} />
                 <Route path="/archived" element={<Archived />} />
+                <Route path="/*" element={<NotFound />} />
               </Routes>
             </div>
           </div>
